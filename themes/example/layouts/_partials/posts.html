@@ -1,0 +1,12 @@
+{{ with where site.RegularPages "Section" "posts" }}
+  <section class="page-list" aria-labelledby="posts-heading">
+    <h2 id="posts-heading">Posts</h2>
+
+    {{ range . }}
+      <article>
+        <h3><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h3>
+        {{ with .Summary }}{{ . }}{{ end }}
+      </article>
+    {{ end }}
+  </section>
+{{ end }}

@@ -1,0 +1,22 @@
+{{ $commit := os.Getenv "HUGO_GIT_COMMIT" }}
+{{ $state := os.Getenv "HUGO_GIT_STATE" }}
+{{ $jsEnabledIcon := resources.Get "icons/check-circle.svg" }}
+{{ $jsDisabledIcon := resources.Get "icons/x-circle.svg" }}
+
+<small class="site-meta">
+  <span>Built with Hugo <code>{{ hugo.Version }}</code>.</span>
+  {{ if $commit }}
+    <span>Site version: <code>{{ $commit }}</code>{{ with $state }} ({{ . }}){{ end }}</span>
+  {{ else }}
+    <span>Site version unavailable.</span>
+  {{ end }}
+  <span class="js-status" data-js-status data-state="disabled" aria-live="polite">
+    {{ with $jsEnabledIcon }}
+      <span class="js-status__icon js-status__icon--enabled" data-js-status-enabled-icon hidden aria-hidden="true">{{ .Content | safeHTML }}</span>
+    {{ end }}
+    {{ with $jsDisabledIcon }}
+      <span class="js-status__icon js-status__icon--disabled" data-js-status-disabled-icon aria-hidden="true">{{ .Content | safeHTML }}</span>
+    {{ end }}
+    <span data-js-status-label>JavaScript disabled</span>
+  </span>
+</small>

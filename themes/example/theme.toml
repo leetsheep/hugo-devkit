@@ -1,0 +1,11 @@
+name = 'example'
+license = 'MIT'
+licenselink = 'https://opensource.org/license/mit'
+description = 'A minimal verification theme for hugo-devkit.'
+homepage = 'https://example.org/'
+tags = ['minimal', 'example']
+features = ['responsive']
+min_version = '0.146.0'
+
+[author]
+  name = 'hugo-devkit'

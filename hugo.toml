@@ -1,5 +1,6 @@
 baseURL = 'https://example.org/'
 locale = 'en-us'
+theme = ['example']
 title = 'hugo-devkit'
 
 [params]
