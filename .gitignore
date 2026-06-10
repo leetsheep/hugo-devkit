@@ -1,0 +1,33 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Editors and IDEs
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Environment and local overrides
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Hugo generated output
+/public/*
+!/public/.gitignore
+/resources/*
+!/resources/.gitignore
+/.hugo_build.lock
+
+# Dependency caches
+node_modules/
+.cache/

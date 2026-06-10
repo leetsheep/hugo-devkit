@@ -1,0 +1,6 @@
+baseURL = 'https://example.org/'
+locale = 'en-us'
+title = 'hugo-devkit'
+
+[params]
+  description = 'A batteries-included Hugo starter kit for local development and deployment.'
