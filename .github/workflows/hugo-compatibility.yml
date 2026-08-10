@@ -1,4 +1,4 @@
-name: Hugo compatibility
+name: pipeline
 
 on:
   pull_request:
@@ -19,8 +19,8 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  hugo-compatibility:
-    name: Hugo compatibility
+  test:
+    name: test/hugo-compatibility
     runs-on: ubuntu-latest
     timeout-minutes: 15
 
@@ -40,10 +40,10 @@ jobs:
           if-no-files-found: warn
           retention-days: 14
 
-  build-pages:
-    name: Build example site
+  build:
+    name: build/gh-pages
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-    needs: hugo-compatibility
+    needs: test
     runs-on: ubuntu-latest
     timeout-minutes: 10
 
@@ -66,10 +66,10 @@ jobs:
         with:
           path: ${{ runner.temp }}/pages
 
-  deploy-pages:
-    name: Deploy example site
+  deploy:
+    name: deploy/gh-pages
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-    needs: build-pages
+    needs: build
     runs-on: ubuntu-latest
     timeout-minutes: 10
     permissions:

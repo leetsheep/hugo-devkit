@@ -65,9 +65,9 @@ included in the generated report instead of being silently omitted.
 
 ## Pipeline integration
 
-GitHub Actions runs the stable `Hugo compatibility / Hugo compatibility` check
-for pull requests and pushes involving `develop` or `main`. Configure that check
-as required in branch protection.
+GitHub Actions runs the stable `pipeline / test/hugo-compatibility` check for
+pull requests and pushes involving `develop` or `main`. Configure that check as
+required in branch protection.
 
 Other CI systems should call the same entrypoint. A minimal GitLab-style job is:
 
@@ -95,8 +95,8 @@ succeed.
 
 Before enabling the Renovate repository, configure these safeguards:
 
-1. Protect `develop` and require `Hugo compatibility / Hugo compatibility` plus
-   every other mandatory pipeline check.
+1. Protect `develop` and require `test/hugo-compatibility` plus every other
+   mandatory pipeline check.
 2. Enable repository auto-merge and the merge-commit strategy.
 3. Ensure Renovate configuration is available from the repository's default
    branch so it can discover `baseBranchPatterns: ["develop"]`.
