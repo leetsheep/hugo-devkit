@@ -1,7 +1,9 @@
 {{ define "main" }}
-  <section class="content">
-    <h1>{{ .Title }}</h1>
-    {{ .Content }}
+  <section class="listing">
+    <header class="listing-header">
+      <h1>{{ .Title }}</h1>
+      {{ .Content }}
+    </header>
 
     <div class="page-list">
       {{ range .Data.Terms.Alphabetical }}

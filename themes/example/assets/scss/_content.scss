@@ -19,8 +19,13 @@
 .card-grid,
 .page-list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1rem;
+}
+
+.listing-header {
+  max-width: var(--width-reading);
+  margin-block-end: 2rem;
 }
 
 .card {
@@ -107,4 +112,18 @@
 .pagination .disabled .page-link {
   color: var(--color-muted);
   opacity: 0.55;
+}
+
+@media (max-width: 56rem) {
+  .card-grid,
+  .page-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 40rem) {
+  .card-grid,
+  .page-list {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }
