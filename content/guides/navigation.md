@@ -43,7 +43,7 @@ terms instead of many one-page terms.
 ## Pagination
 
 Section and term templates call `.Paginate` once, then render Hugo's embedded
-pagination partial. `pagination.pagerSize = 3` makes the example visible with a
+pagination partial. `pagination.pagerSize = 4` makes the example visible with a
 small number of posts. Real sites should choose a size for their content and
 page weight.
 

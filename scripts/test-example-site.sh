@@ -117,6 +117,10 @@ assert_contains guides.json '"version":"[0-9]'
 assert_contains guides/resources/index.html '\.webp'
 assert_contains guides/resources/index.html 'example-data\.json'
 assert_contains posts/index.html 'posts/page/2/'
+if [ "$(grep -o 'class=card' "$OUTPUT_ROOT/posts/index.html" | wc -l | tr -d ' ')" -ne 4 ]; then
+  printf 'error: first posts page does not contain four items\n' >&2
+  exit 1
+fi
 assert_contains 404.html 'Page not found'
 assert_contains guides/pages/index.html 'guides/content/'
 assert_contains site.webmanifest '"name": "Hugo Devkit"'
