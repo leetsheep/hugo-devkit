@@ -1,0 +1,6 @@
+{{- $id := .id -}}
+{{- if not .actual -}}
+  {{- errorf "[compatibility:%s] expected a truthy value, received %#v" $id .actual -}}
+{{- end -}}
+{{- .scratch.SetInMap "results" $id (dict "id" $id "status" "pass") -}}
+

@@ -31,3 +31,6 @@ yarn-error.log*
 # Dependency caches
 node_modules/
 .cache/
+
+# Compatibility test artifacts
+/artifacts/

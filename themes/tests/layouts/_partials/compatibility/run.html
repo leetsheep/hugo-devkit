@@ -1,0 +1,58 @@
+{{- $scratch := newScratch -}}
+{{- $context := dict "page" . "scratch" $scratch -}}
+{{- if eq site.Params.compatibilityDiagnostic "warning" -}}
+  {{- warnf "[compatibility:expected-warning] warning diagnostics remain non-fatal" -}}
+{{- else if eq site.Params.compatibilityDiagnostic "error" -}}
+  {{- errorf "[compatibility:expected-error] error diagnostics fail the Hugo build" -}}
+{{- end -}}
+{{- partial "compatibility/checks/collections.html" $context -}}
+{{- partial "compatibility/checks/primitives.html" $context -}}
+{{- partial "compatibility/checks/environment.html" $context -}}
+{{- partial "compatibility/checks/pages.html" $context -}}
+{{- partial "compatibility/checks/resources.html" $context -}}
+
+{{- $coverage := hugo.Data.compatibility.coverage -}}
+{{- $results := $scratch.Get "results" | default dict -}}
+{{- $seen := newScratch -}}
+{{- $requiredCount := 0 -}}
+{{- $excludedCount := 0 -}}
+{{- range $coverage -}}
+  {{- if $seen.Get .id -}}
+    {{- errorf "[compatibility:manifest] duplicate coverage id %q" .id -}}
+  {{- end -}}
+  {{- $seen.Set .id true -}}
+  {{- if eq .tier "required" -}}
+    {{- $requiredCount = add $requiredCount 1 -}}
+    {{- if not (index $results .id) -}}
+      {{- errorf "[compatibility:manifest] required case %q did not execute" .id -}}
+    {{- end -}}
+  {{- else if eq .tier "excluded" -}}
+    {{- $excludedCount = add $excludedCount 1 -}}
+    {{- if not .reason -}}
+      {{- errorf "[compatibility:manifest] excluded case %q has no reason" .id -}}
+    {{- end -}}
+  {{- else -}}
+    {{- errorf "[compatibility:manifest] case %q has invalid tier %q" .id .tier -}}
+  {{- end -}}
+{{- end -}}
+{{- if ne (len $results) $requiredCount -}}
+  {{- errorf "[compatibility:manifest] executed %d cases, expected %d" (len $results) $requiredCount -}}
+{{- end -}}
+
+{{- $report := dict
+  "environment" hugo.Environment
+  "excluded" (where $coverage "tier" "excluded")
+  "excludedCount" $excludedCount
+  "hugoVersion" (cast.ToString hugo.Version)
+  "requiredCount" $requiredCount
+  "results" $results
+  "status" "pass"
+-}}
+{{- $reportResource := resources.FromString "compatibility.json" ($report | transform.Remarshal "json") -}}
+{{- $noop := $reportResource.Publish -}}
+
+<section aria-labelledby="compatibility-heading" data-compatibility-suite data-required-count="{{ $requiredCount }}">
+  <h2 id="compatibility-heading">Compatibility suite</h2>
+  <p>{{ $requiredCount }} required checks passed; {{ $excludedCount }} environment-dependent checks are inventoried.</p>
+  <a href="{{ $reportResource.RelPermalink }}">Machine-readable report</a>
+</section>

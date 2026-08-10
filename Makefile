@@ -1,8 +1,11 @@
 .DEFAULT_GOAL := dev
-.PHONY: dev publish _serve
+.PHONY: dev publish test _serve
 
+# renovate: datasource=docker depName=ghcr.io/gohugoio/hugo versioning=docker
 HUGO_IMAGE ?= ghcr.io/gohugoio/hugo:v0.162.1
 HUGO_PORT ?= 1313
+CONTAINER_RUNTIME ?= docker
+HUGO_TEST_ARTIFACTS ?= $(CURDIR)/artifacts/hugo-compatibility
 LAN_HOST ?= $(shell ipconfig getifaddr en0 2>/dev/null || ipconfig getifaddr en1 2>/dev/null || ifconfig 2>/dev/null | awk '/inet / && $$2 != "127.0.0.1" { print $$2; exit }')
 LAN_HOST := $(if $(strip $(LAN_HOST)),$(strip $(LAN_HOST)),0.0.0.0)
 GIT_COMMIT ?= $(shell git rev-parse --short HEAD 2>/dev/null || echo unknown)
@@ -28,6 +31,12 @@ publish: HOST_BIND := 0.0.0.0
 publish: BASE_URL := http://$(LAN_HOST):$(HUGO_PORT)/
 publish: _serve
 endif
+
+test:
+	@HUGO_IMAGE='$(HUGO_IMAGE)' \
+		CONTAINER_RUNTIME='$(CONTAINER_RUNTIME)' \
+		HUGO_TEST_ARTIFACTS='$(HUGO_TEST_ARTIFACTS)' \
+		./scripts/test-hugo-compatibility.sh
 
 _serve:
 	@printf 'Starting Hugo at %s\n' '$(BASE_URL)'

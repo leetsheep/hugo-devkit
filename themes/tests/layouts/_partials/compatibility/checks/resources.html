@@ -1,0 +1,32 @@
+{{- $scratch := .scratch -}}
+{{- $page := .page -}}
+{{- $text := resources.Get "compatibility/fixture.txt" -}}
+{{- partial "compatibility/assert-true.html" (dict "scratch" $scratch "id" "resources.get" "actual" (and $text (strings.Contains $text.Content "global resource"))) -}}
+{{- partial "compatibility/assert-equal.html" (dict "scratch" $scratch "id" "resources.get-match" "actual" (resources.GetMatch "compatibility/*.txt").Name "expected" "/compatibility/fixture.txt") -}}
+{{- partial "compatibility/assert-true.html" (dict "scratch" $scratch "id" "resources.match" "actual" (ge (len (resources.Match "compatibility/*")) 6)) -}}
+{{- $created := resources.FromString "compatibility/created.txt" "created resource" -}}
+{{- partial "compatibility/assert-equal.html" (dict "scratch" $scratch "id" "resources.from-string" "actual" $created.Content "expected" "created resource") -}}
+{{- $copied := resources.Copy "compatibility/copied.txt" $text -}}
+{{- partial "compatibility/assert-equal.html" (dict "scratch" $scratch "id" "resources.copy" "actual" $copied.RelPermalink "expected" "/compatibility/copied.txt") -}}
+{{- $templateSource := resources.FromString "compatibility/template-source.txt" "Title: {{ .Title }}" -}}
+{{- $templated := resources.ExecuteAsTemplate "compatibility/templated.txt" $page $templateSource -}}
+{{- partial "compatibility/assert-true.html" (dict "scratch" $scratch "id" "resources.execute-template" "actual" (strings.Contains $templated.Content $page.Title)) -}}
+{{- $css := resources.Get "compatibility/fixture.css" -}}
+{{- $minified := resources.Minify $css -}}
+{{- partial "compatibility/assert-true.html" (dict "scratch" $scratch "id" "resources.minify" "actual" (lt (len $minified.Content) (len $css.Content))) -}}
+{{- $fingerprinted := resources.Fingerprint "sha256" $text -}}
+{{- partial "compatibility/assert-true.html" (dict "scratch" $scratch "id" "resources.fingerprint" "actual" (strings.HasPrefix $fingerprinted.Data.Integrity "sha256-")) -}}
+{{- $scss := resources.Get "compatibility/fixture.scss" -}}
+{{- $sass := css.Sass (dict "transpiler" "dartsass" "targetPath" "compatibility/fixture.css") $scss -}}
+{{- partial "compatibility/assert-true.html" (dict "scratch" $scratch "id" "css.sass" "actual" (strings.Contains $sass.Content "#123456")) -}}
+{{- $javascript := resources.Get "compatibility/fixture.js" | js.Build (dict "targetPath" "compatibility/fixture.js") -}}
+{{- partial "compatibility/assert-true.html" (dict "scratch" $scratch "id" "js.build" "actual" (strings.Contains $javascript.Content "compatibilityAnswer")) -}}
+{{- $openAPIResource := resources.Get "compatibility/openapi.yaml" -}}
+{{- $openAPI := openapi3.Unmarshal $openAPIResource -}}
+{{- partial "compatibility/assert-equal.html" (dict "scratch" $scratch "id" "openapi.unmarshal" "actual" $openAPI.Info.Title "expected" "Compatibility API") -}}
+{{- $noop := $copied.Publish -}}
+{{- $noop = $templated.Publish -}}
+{{- $noop = $minified.Publish -}}
+{{- $noop = $fingerprinted.Publish -}}
+{{- $noop = $sass.Publish -}}
+{{- $noop = $javascript.Publish -}}

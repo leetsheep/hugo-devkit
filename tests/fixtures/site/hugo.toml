@@ -1,0 +1,68 @@
+baseURL = 'https://compatibility.example/'
+defaultContentLanguage = 'en'
+enableGitInfo = true
+enableRobotsTXT = true
+pagination.pagerSize = 1
+summaryLength = 12
+theme = ['tests', 'example']
+themesDir = '../../../themes'
+timeZone = 'Europe/Berlin'
+title = 'Hugo compatibility suite'
+
+[params]
+  description = 'Deterministic fixtures for Hugo version compatibility checks.'
+  compatibilityMode = 'build'
+
+[taxonomies]
+  category = 'categories'
+  tag = 'tags'
+
+[permalinks]
+  posts = '/journal/:slug/'
+
+[outputs]
+  home = ['html', 'rss']
+  section = ['html', 'rss']
+  taxonomy = ['html', 'rss']
+  term = ['html', 'rss']
+
+[languages]
+  [languages.en]
+    contentDir = 'content/en'
+    label = 'English'
+    locale = 'en-US'
+    weight = 1
+  [languages.de]
+    contentDir = 'content/de'
+    label = 'Deutsch'
+    locale = 'de-DE'
+    title = 'Hugo-Kompatibilitätstest'
+    weight = 2
+
+[menus]
+  [[menus.main]]
+    identifier = 'home'
+    name = 'Home'
+    pageRef = '/'
+    weight = 10
+  [[menus.main]]
+    identifier = 'posts'
+    name = 'Posts'
+    pageRef = '/posts'
+    weight = 20
+
+[related]
+  includeNewer = true
+  threshold = 0
+  toLower = true
+  [[related.indices]]
+    applyFilter = false
+    cardinalityThreshold = 0
+    name = 'tags'
+    pattern = ''
+    type = 'basic'
+    weight = 100
+
+[security]
+  [security.funcs]
+    getenv = ['^HUGO_', '^CI$']

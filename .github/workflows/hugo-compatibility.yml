@@ -1,0 +1,41 @@
+name: Hugo compatibility
+
+on:
+  pull_request:
+    branches:
+      - develop
+      - main
+  push:
+    branches:
+      - develop
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: hugo-compatibility-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  hugo-compatibility:
+    name: Hugo compatibility
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+
+      - name: Run compatibility suite
+        run: make test
+
+      - name: Upload compatibility artifacts
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: hugo-compatibility-${{ github.sha }}
+          path: artifacts/hugo-compatibility
+          if-no-files-found: warn
+          retention-days: 14

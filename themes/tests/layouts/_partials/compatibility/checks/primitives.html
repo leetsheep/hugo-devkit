@@ -1,0 +1,67 @@
+{{- $scratch := .scratch -}}
+{{- partial "compatibility/assert-equal.html" (dict "scratch" $scratch "id" "cast.to-float" "actual" (cast.ToFloat "42.5") "expected" 42.5) -}}
+{{- partial "compatibility/assert-equal.html" (dict "scratch" $scratch "id" "cast.to-int" "actual" (cast.ToInt "42") "expected" 42) -}}
+{{- partial "compatibility/assert-equal.html" (dict "scratch" $scratch "id" "cast.to-string" "actual" (cast.ToString 42) "expected" "42") -}}
+
+{{- partial "compatibility/assert-equal.html" (dict "scratch" $scratch "id" "compare.conditional" "actual" (compare.Conditional true "yes" "no") "expected" "yes") -}}
+{{- partial "compatibility/assert-equal.html" (dict "scratch" $scratch "id" "compare.default" "actual" (compare.Default "fallback" "") "expected" "fallback") -}}
+{{- partial "compatibility/assert-true.html" (dict "scratch" $scratch "id" "compare.eq" "actual" (compare.Eq 42 42)) -}}
+{{- partial "compatibility/assert-true.html" (dict "scratch" $scratch "id" "compare.ge" "actual" (compare.Ge 42 42)) -}}
+{{- partial "compatibility/assert-true.html" (dict "scratch" $scratch "id" "compare.gt" "actual" (compare.Gt 43 42)) -}}
+{{- partial "compatibility/assert-true.html" (dict "scratch" $scratch "id" "compare.le" "actual" (compare.Le 42 42)) -}}
+{{- partial "compatibility/assert-true.html" (dict "scratch" $scratch "id" "compare.lt" "actual" (compare.Lt 41 42)) -}}
+{{- partial "compatibility/assert-true.html" (dict "scratch" $scratch "id" "compare.ne" "actual" (compare.Ne 41 42)) -}}
+
+{{- partial "compatibility/assert-equal.html" (dict "scratch" $scratch "id" "crypto.hash" "actual" (crypto.SHA256 "Hello world") "expected" "64ec88ca00b268e5ba1a35678a1b5316d212f4f366b2477232534a8aeca37f3c") -}}
+{{- partial "compatibility/assert-equal.html" (dict "scratch" $scratch "id" "crypto.hmac" "actual" (crypto.HMAC "sha256" "Secret key" "Secret message") "expected" "5cceb491f45f8b154e20f3b0a30ed3a6ff3027d373f85c78ffe8983180b03c84") -}}
+{{- partial "compatibility/assert-equal.html" (dict "scratch" $scratch "id" "encoding.base64-encode" "actual" (encoding.Base64Encode "Hugo") "expected" "SHVnbw==") -}}
+{{- partial "compatibility/assert-equal.html" (dict "scratch" $scratch "id" "encoding.base64-decode" "actual" (encoding.Base64Decode "SHVnbw==") "expected" "Hugo") -}}
+{{- partial "compatibility/assert-equal.html" (dict "scratch" $scratch "id" "hash.xxhash" "actual" (hash.XxHash "Hello world") "expected" "c500b0c912b376d8") -}}
+{{- partial "compatibility/assert-true.html" (dict "scratch" $scratch "id" "hash.fnv32a" "actual" (gt (hash.FNV32a "Hello world") 0)) -}}
+{{- partial "compatibility/assert-equal.html" (dict "scratch" $scratch "id" "inflect.humanize" "actual" (inflect.Humanize "foo-bar") "expected" "Foo bar") -}}
+{{- partial "compatibility/assert-equal.html" (dict "scratch" $scratch "id" "inflect.pluralize" "actual" (inflect.Pluralize "person") "expected" "people") -}}
+{{- partial "compatibility/assert-equal.html" (dict "scratch" $scratch "id" "inflect.singularize" "actual" (inflect.Singularize "people") "expected" "person") -}}
+
+{{- partial "compatibility/assert-equal.html" (dict "scratch" $scratch "id" "math.abs" "actual" (math.Abs -42) "expected" 42) -}}
+{{- partial "compatibility/assert-equal.html" (dict "scratch" $scratch "id" "math.add" "actual" (math.Add 40 2) "expected" 42) -}}
+{{- partial "compatibility/assert-equal.html" (dict "scratch" $scratch "id" "math.ceil" "actual" (math.Ceil 41.2) "expected" 42.0) -}}
+{{- partial "compatibility/assert-equal.html" (dict "scratch" $scratch "id" "math.div" "actual" (math.Div 84 2) "expected" 42) -}}
+{{- partial "compatibility/assert-equal.html" (dict "scratch" $scratch "id" "math.floor" "actual" (math.Floor 42.8) "expected" 42.0) -}}
+{{- partial "compatibility/assert-equal.html" (dict "scratch" $scratch "id" "math.max" "actual" (math.Max 4 42 7) "expected" 42) -}}
+{{- partial "compatibility/assert-equal.html" (dict "scratch" $scratch "id" "math.min" "actual" (math.Min 42 7 9) "expected" 7) -}}
+{{- partial "compatibility/assert-equal.html" (dict "scratch" $scratch "id" "math.mod" "actual" (math.Mod 86 44) "expected" 42) -}}
+{{- partial "compatibility/assert-equal.html" (dict "scratch" $scratch "id" "math.mul" "actual" (math.Mul 6 7) "expected" 42) -}}
+{{- partial "compatibility/assert-equal.html" (dict "scratch" $scratch "id" "math.pow" "actual" (math.Pow 2 3) "expected" 8.0) -}}
+{{- partial "compatibility/assert-equal.html" (dict "scratch" $scratch "id" "math.round" "actual" (math.Round 41.6) "expected" 42.0) -}}
+{{- partial "compatibility/assert-equal.html" (dict "scratch" $scratch "id" "math.sqrt" "actual" (math.Sqrt 1764) "expected" 42.0) -}}
+{{- partial "compatibility/assert-equal.html" (dict "scratch" $scratch "id" "math.sub" "actual" (math.Sub 44 2) "expected" 42) -}}
+
+{{- partial "compatibility/assert-equal.html" (dict "scratch" $scratch "id" "path.base" "actual" (path.Base "/a/b/file.txt") "expected" "file.txt") -}}
+{{- partial "compatibility/assert-equal.html" (dict "scratch" $scratch "id" "path.basename" "actual" (path.BaseName "/a/b/file.txt") "expected" "file") -}}
+{{- partial "compatibility/assert-equal.html" (dict "scratch" $scratch "id" "path.clean" "actual" (path.Clean "a/../b") "expected" "b") -}}
+{{- partial "compatibility/assert-equal.html" (dict "scratch" $scratch "id" "path.dir" "actual" (path.Dir "/a/b/file.txt") "expected" "/a/b") -}}
+{{- partial "compatibility/assert-equal.html" (dict "scratch" $scratch "id" "path.ext" "actual" (path.Ext "file.txt") "expected" ".txt") -}}
+{{- partial "compatibility/assert-equal.html" (dict "scratch" $scratch "id" "path.join" "actual" (path.Join "a" "b" ".." "file.txt") "expected" "a/file.txt") -}}
+{{- partial "compatibility/assert-true.html" (dict "scratch" $scratch "id" "reflect.ismap" "actual" (reflect.IsMap (dict "answer" 42))) -}}
+{{- partial "compatibility/assert-true.html" (dict "scratch" $scratch "id" "reflect.isslice" "actual" (reflect.IsSlice (slice 1 2))) -}}
+
+{{- partial "compatibility/assert-equal.html" (dict "scratch" $scratch "id" "strings.chomp" "actual" (strings.Chomp "Hugo\n") "expected" "Hugo") -}}
+{{- partial "compatibility/assert-true.html" (dict "scratch" $scratch "id" "strings.contains" "actual" (strings.Contains "Hugo compatibility" "compat")) -}}
+{{- partial "compatibility/assert-true.html" (dict "scratch" $scratch "id" "strings.contains-any" "actual" (strings.ContainsAny "Hugo" "xyzg")) -}}
+{{- partial "compatibility/assert-true.html" (dict "scratch" $scratch "id" "strings.has-prefix" "actual" (strings.HasPrefix "Hugo" "Hu")) -}}
+{{- partial "compatibility/assert-true.html" (dict "scratch" $scratch "id" "strings.has-suffix" "actual" (strings.HasSuffix "Hugo" "go")) -}}
+{{- partial "compatibility/assert-equal.html" (dict "scratch" $scratch "id" "strings.repeat" "actual" (strings.Repeat 3 "go") "expected" "gogogo") -}}
+{{- partial "compatibility/assert-equal.html" (dict "scratch" $scratch "id" "strings.replace" "actual" (strings.Replace "Hugo test" "test" "suite") "expected" "Hugo suite") -}}
+{{- partial "compatibility/assert-equal.html" (dict "scratch" $scratch "id" "strings.split" "actual" (strings.Split "a,b,c" ",") "expected" (slice "a" "b" "c")) -}}
+{{- partial "compatibility/assert-equal.html" (dict "scratch" $scratch "id" "strings.title" "actual" (strings.Title "hugo suite") "expected" "Hugo Suite") -}}
+{{- partial "compatibility/assert-equal.html" (dict "scratch" $scratch "id" "strings.lower" "actual" (strings.ToLower "HUGO") "expected" "hugo") -}}
+{{- partial "compatibility/assert-equal.html" (dict "scratch" $scratch "id" "strings.upper" "actual" (strings.ToUpper "hugo") "expected" "HUGO") -}}
+{{- partial "compatibility/assert-equal.html" (dict "scratch" $scratch "id" "strings.trim" "actual" (strings.Trim "...Hugo..." ".") "expected" "Hugo") -}}
+{{- partial "compatibility/assert-equal.html" (dict "scratch" $scratch "id" "strings.trim-space" "actual" (strings.TrimSpace "  Hugo \n") "expected" "Hugo") -}}
+
+{{- partial "compatibility/assert-equal.html" (dict "scratch" $scratch "id" "urls.anchorize" "actual" (urls.Anchorize "Hugo Compatibility") "expected" "hugo-compatibility") -}}
+{{- partial "compatibility/assert-equal.html" (dict "scratch" $scratch "id" "urls.join" "actual" (urls.JoinPath "https://example.org/docs/" "../guide") "expected" "https://example.org/guide") -}}
+{{- partial "compatibility/assert-equal.html" (dict "scratch" $scratch "id" "urls.escape" "actual" (urls.PathEscape "Hugo suite") "expected" "Hugo%20suite") -}}
+{{- partial "compatibility/assert-equal.html" (dict "scratch" $scratch "id" "urls.unescape" "actual" (urls.PathUnescape "Hugo%20suite") "expected" "Hugo suite") -}}
+{{- partial "compatibility/assert-true.html" (dict "scratch" $scratch "id" "urls.abs" "actual" (strings.HasSuffix (urls.AbsURL "docs/") "/docs/")) -}}
+{{- partial "compatibility/assert-true.html" (dict "scratch" $scratch "id" "urls.relative" "actual" (strings.HasSuffix (urls.RelURL "docs/") "/docs/")) -}}
