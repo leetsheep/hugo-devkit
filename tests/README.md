@@ -86,3 +86,21 @@ The runner must provide Docker, Podman, or an equivalent OCI runtime. Image buil
 and deployment jobs should depend on this job and must not use an unconditional
 execution rule that bypasses a failed compatibility result.
 
+## Renovate promotion
+
+Renovate detects the `HUGO_IMAGE` assignment in the Makefile and opens each Hugo
+upgrade against `develop`. Patch, minor, and major updates use platform automerge
+with a merge commit. GitHub merges the PR only after all required branch checks
+succeed.
+
+Before enabling the Renovate repository, configure these safeguards:
+
+1. Protect `develop` and require `Hugo compatibility / Hugo compatibility` plus
+   every other mandatory pipeline check.
+2. Enable repository auto-merge and the merge-commit strategy.
+3. Ensure Renovate configuration is available from the repository's default
+   branch so it can discover `baseBranchPatterns: ["develop"]`.
+
+Do not enable platform automerge without at least one required status check.
+Renovate documents that GitHub can otherwise merge before tests have completed.
+Promotion from `develop` to `main` remains a manual PR guarded by the same test.

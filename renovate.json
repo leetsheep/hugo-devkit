@@ -1,0 +1,50 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:recommended"
+  ],
+  "baseBranchPatterns": [
+    "develop"
+  ],
+  "customManagers": [
+    {
+      "customType": "regex",
+      "description": "Update the Hugo compatibility image",
+      "managerFilePatterns": [
+        "/^Makefile$/"
+      ],
+      "matchStrings": [
+        "HUGO_IMAGE \\?= ghcr\\.io/gohugoio/hugo:(?<currentValue>v[0-9]+\\.[0-9]+\\.[0-9]+(?:[-+][^\\s]+)?)"
+      ],
+      "depNameTemplate": "ghcr.io/gohugoio/hugo",
+      "datasourceTemplate": "docker",
+      "versioningTemplate": "docker"
+    }
+  ],
+  "packageRules": [
+    {
+      "description": "Automerge tested Hugo updates into develop",
+      "matchDatasources": [
+        "docker"
+      ],
+      "matchPackageNames": [
+        "ghcr.io/gohugoio/hugo"
+      ],
+      "matchUpdateTypes": [
+        "major",
+        "minor",
+        "patch",
+        "pin",
+        "pinDigest",
+        "digest"
+      ],
+      "automerge": true,
+      "automergeType": "pr",
+      "automergeStrategy": "merge-commit",
+      "platformAutomerge": true,
+      "commitMessageAction": "update",
+      "commitMessageTopic": "hugo",
+      "commitMessageExtra": "to {{{newValue}}}"
+    }
+  ]
+}

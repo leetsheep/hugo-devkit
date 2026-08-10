@@ -1,6 +1,7 @@
 .DEFAULT_GOAL := dev
 .PHONY: dev publish test _serve
 
+# renovate: datasource=docker depName=ghcr.io/gohugoio/hugo versioning=docker
 HUGO_IMAGE ?= ghcr.io/gohugoio/hugo:v0.162.1
 HUGO_PORT ?= 1313
 CONTAINER_RUNTIME ?= docker
