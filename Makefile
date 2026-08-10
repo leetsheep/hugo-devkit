@@ -1,11 +1,13 @@
 .DEFAULT_GOAL := dev
-.PHONY: dev publish test _serve
+.PHONY: build dev publish test _serve
 
 # renovate: datasource=docker depName=ghcr.io/gohugoio/hugo versioning=docker
 HUGO_IMAGE ?= ghcr.io/gohugoio/hugo:v0.162.1
 HUGO_PORT ?= 1313
 CONTAINER_RUNTIME ?= docker
 HUGO_TEST_ARTIFACTS ?= $(CURDIR)/artifacts/hugo-compatibility
+HUGO_BASEURL ?= https://example.org/
+HUGO_DESTINATION ?= $(CURDIR)/public
 LAN_HOST ?= $(shell ipconfig getifaddr en0 2>/dev/null || ipconfig getifaddr en1 2>/dev/null || ifconfig 2>/dev/null | awk '/inet / && $$2 != "127.0.0.1" { print $$2; exit }')
 LAN_HOST := $(if $(strip $(LAN_HOST)),$(strip $(LAN_HOST)),0.0.0.0)
 GIT_COMMIT ?= $(shell git rev-parse --short HEAD 2>/dev/null || echo unknown)
@@ -18,6 +20,24 @@ GIT_STATE ?= $(shell \
 )
 
 PUBLISH_MODE := $(filter publish,$(MAKECMDGOALS))
+
+build:
+	@mkdir -p '$(HUGO_DESTINATION)'
+	@$(CONTAINER_RUNTIME) run --rm \
+		--user "$$(id -u):$$(id -g)" \
+		-e HOME=/tmp \
+		-e HUGO_CACHEDIR=/tmp/hugo-cache \
+		-e HUGO_RESOURCEDIR=/tmp/hugo-resources \
+		-v "$(CURDIR):/src:ro" \
+		-v "$(HUGO_DESTINATION):/output" \
+		-w /src \
+		"$(HUGO_IMAGE)" build \
+		--baseURL '$(HUGO_BASEURL)' \
+		--cleanDestinationDir \
+		--destination /output \
+		--environment production \
+		--minify \
+		--noBuildLock
 
 dev: HOST_BIND := $(if $(PUBLISH_MODE),0.0.0.0,127.0.0.1)
 dev: BASE_URL := $(if $(PUBLISH_MODE),http://$(LAN_HOST):$(HUGO_PORT)/,http://localhost:$(HUGO_PORT)/)
