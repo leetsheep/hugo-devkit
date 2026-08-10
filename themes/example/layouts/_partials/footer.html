@@ -10,7 +10,7 @@
   {{ else }}
     <span>Site version unavailable.</span>
   {{ end }}
-  <span class="js-status" data-js-status data-state="disabled" aria-live="polite">
+  <span class="js-status" data-js-status data-enabled-label="{{ i18n `javascript_enabled` }}" data-state="disabled" aria-live="polite">
     {{ with $jsEnabledIcon }}
       <span class="js-status__icon js-status__icon--enabled" data-js-status-enabled-icon hidden aria-hidden="true">{{ .Content | safeHTML }}</span>
     {{ end }}

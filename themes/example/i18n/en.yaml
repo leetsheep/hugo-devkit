@@ -18,5 +18,6 @@ not_found: Page not found
 not_found_help: The link may be old, or the page may have moved.
 return_home: Return to the home page
 javascript_disabled: JavaScript disabled
+javascript_enabled: JavaScript enabled
 copy_code: Copy code
 code_copied: Copied

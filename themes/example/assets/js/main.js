@@ -8,7 +8,7 @@ if (jsStatus) {
   if (label && enabledIcon && disabledIcon) {
     document.documentElement.classList.add("js-enabled");
     jsStatus.dataset.state = "enabled";
-    label.textContent = document.documentElement.lang === "de-DE" ? "JavaScript aktiv" : "JavaScript enabled";
+    label.textContent = jsStatus.dataset.enabledLabel || "JavaScript enabled";
     enabledIcon.hidden = false;
     disabledIcon.hidden = true;
   }
@@ -28,7 +28,11 @@ if (navigator.clipboard) {
     button.type = "button";
     button.textContent = defaultLabel;
     button.addEventListener("click", async () => {
-      await navigator.clipboard.writeText(code.textContent);
+      try {
+        await navigator.clipboard.writeText(code.textContent);
+      } catch {
+        return;
+      }
       button.textContent = copiedLabel;
       window.setTimeout(() => {
         button.textContent = defaultLabel;

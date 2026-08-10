@@ -18,5 +18,6 @@ not_found: Seite nicht gefunden
 not_found_help: Der Link ist vielleicht alt oder die Seite wurde verschoben.
 return_home: Zur Startseite
 javascript_disabled: JavaScript inaktiv
+javascript_enabled: JavaScript aktiv
 copy_code: Code kopieren
 code_copied: Kopiert

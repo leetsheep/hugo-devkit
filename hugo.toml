@@ -1,7 +1,74 @@
 baseURL = 'https://example.org/'
-locale = 'en-us'
+copyright = 'Example code is available under the repository license.'
+defaultContentLanguage = 'en'
+enableRobotsTXT = true
+locale = 'en-US'
+pagination.pagerSize = 3
+summaryLength = 24
 theme = ['example']
-title = 'hugo-devkit'
+timeZone = 'Europe/Berlin'
+title = 'Hugo Devkit'
 
 [params]
-  description = 'A batteries-included Hugo starter kit for local development and deployment.'
+  dateFormat = ':date_long'
+  description = 'Small, working examples of native Hugo features and good defaults.'
+
+[taxonomies]
+  category = 'categories'
+  tag = 'tags'
+
+[outputs]
+  home = ['html', 'rss', 'guideIndex']
+  section = ['html', 'rss']
+  taxonomy = ['html', 'rss']
+  term = ['html', 'rss']
+
+[outputFormats.guideIndex]
+  baseName = 'guides'
+  isPlainText = true
+  mediaType = 'application/json'
+  notAlternative = true
+
+[related]
+  includeNewer = true
+  threshold = 60
+  toLower = true
+
+  [[related.indices]]
+    name = 'tags'
+    type = 'basic'
+    weight = 100
+
+  [[related.indices]]
+    name = 'date'
+    type = 'basic'
+    weight = 10
+
+[menus]
+  [[menus.main]]
+    identifier = 'guides'
+    name = 'Guides'
+    pageRef = '/guides'
+    weight = 10
+
+  [[menus.main]]
+    identifier = 'posts'
+    name = 'Posts'
+    pageRef = '/posts'
+    weight = 20
+
+  [[menus.main]]
+    identifier = 'tags'
+    name = 'Tags'
+    pageRef = '/tags'
+    weight = 30
+
+  [[menus.main]]
+    identifier = 'references'
+    name = 'References'
+    pageRef = '/references'
+    weight = 40
+
+[security]
+  [security.funcs]
+    getenv = ['^HUGO_']
