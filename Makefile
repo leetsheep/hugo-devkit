@@ -1,5 +1,5 @@
 .DEFAULT_GOAL := dev
-.PHONY: build dev publish test _serve
+.PHONY: build dev publish test test-compatibility test-example _serve
 
 # renovate: datasource=docker depName=ghcr.io/gohugoio/hugo versioning=docker
 HUGO_IMAGE ?= ghcr.io/gohugoio/hugo:v0.162.1
@@ -54,7 +54,15 @@ publish: BASE_URL := http://$(LAN_HOST):$(HUGO_PORT)/
 publish: _serve
 endif
 
-test:
+test: test-example test-compatibility
+
+test-example:
+	@HUGO_IMAGE='$(HUGO_IMAGE)' \
+		CONTAINER_RUNTIME='$(CONTAINER_RUNTIME)' \
+		HUGO_TEST_ARTIFACTS='$(HUGO_TEST_ARTIFACTS)' \
+		./scripts/test-example-site.sh
+
+test-compatibility:
 	@HUGO_IMAGE='$(HUGO_IMAGE)' \
 		CONTAINER_RUNTIME='$(CONTAINER_RUNTIME)' \
 		HUGO_TEST_ARTIFACTS='$(HUGO_TEST_ARTIFACTS)' \
