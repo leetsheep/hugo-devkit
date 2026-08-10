@@ -27,6 +27,8 @@ build:
 		--user "$$(id -u):$$(id -g)" \
 		-e HOME=/tmp \
 		-e HUGO_CACHEDIR=/tmp/hugo-cache \
+		-e HUGO_GIT_COMMIT="$(GIT_COMMIT)" \
+		-e HUGO_GIT_STATE="$(GIT_STATE)" \
 		-e HUGO_RESOURCEDIR=/tmp/hugo-resources \
 		-v "$(CURDIR):/src:ro" \
 		-v "$(HUGO_DESTINATION):/output" \
