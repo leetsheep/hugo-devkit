@@ -1,0 +1,94 @@
+.heading-link {
+  color: var(--color-muted);
+  font-size: 0.7em;
+  font-weight: 400;
+  text-decoration: none;
+}
+
+.content-meta,
+.eyebrow {
+  color: var(--color-muted);
+  font-size: 0.9rem;
+}
+
+.content-meta {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.card-grid,
+.page-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+  gap: 1rem;
+}
+
+.card {
+  padding: 1rem 1.25rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: 0.35rem;
+}
+
+.card h3,
+.card h2 {
+  margin-block: 0 0.5rem;
+}
+
+.card p:last-child {
+  margin-block-end: 0;
+}
+
+.toc,
+.callout,
+.downloads {
+  margin-block: 2rem;
+  padding: 1rem 1.25rem;
+  border-inline-start: 0.25rem solid var(--color-link);
+  background: var(--color-surface);
+}
+
+.toc h2,
+.downloads h2 {
+  margin-block-start: 0;
+  font-size: 1rem;
+}
+
+.callout > :first-child {
+  margin-block-start: 0;
+}
+
+.callout > :last-child {
+  margin-block-end: 0;
+}
+
+.related,
+.downloads,
+.page-nav {
+  margin-block-start: 3rem;
+}
+
+.page-nav {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-block-start: 1rem;
+  border-top: 1px solid var(--color-line);
+}
+
+.pagination ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 0;
+  list-style: none;
+}
+
+.pagination a {
+  display: block;
+  min-width: 2.5rem;
+  padding: 0.4rem 0.65rem;
+  text-align: center;
+  border: 1px solid var(--color-line);
+  border-radius: 0.25rem;
+}

@@ -1,0 +1,104 @@
+.skip-link {
+  position: fixed;
+  z-index: 10;
+  top: 0.5rem;
+  left: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  color: var(--color-bg);
+  background: var(--color-fg);
+  transform: translateY(-150%);
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+.site-header,
+.site-main,
+.site-footer {
+  width: min(100% - calc(var(--space-page) * 2), var(--width-content));
+  margin-inline: auto;
+}
+
+.site-header,
+.site-footer {
+  padding-block: 1.5rem;
+}
+
+.site-header {
+  border-bottom: 1px solid var(--color-line);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem 2rem;
+}
+
+.site-title {
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.site-nav ul,
+.breadcrumbs ol {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.site-nav a {
+  text-decoration: none;
+}
+
+.site-nav a[aria-current] {
+  text-decoration: underline;
+  text-decoration-thickness: 0.14em;
+}
+
+.site-main {
+  padding-block: 3rem;
+}
+
+.site-footer {
+  color: var(--color-muted);
+  border-top: 1px solid var(--color-line);
+}
+
+.breadcrumbs {
+  margin-block-end: 2rem;
+  color: var(--color-muted);
+  font-size: 0.9rem;
+}
+
+.breadcrumbs li + li::before {
+  margin-inline-end: 1rem;
+  content: "/";
+}
+
+.intro,
+.content,
+.related,
+.downloads,
+.page-nav {
+  max-width: var(--width-reading);
+}
+
+.intro {
+  margin-block-end: 3rem;
+}
+
+@media (max-width: 40rem) {
+  .header-inner {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .site-main {
+    padding-block: 2rem;
+  }
+}

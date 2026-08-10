@@ -39,9 +39,19 @@ useful title.
 
 ## Global resources and Hugo Pipes
 
-The theme keeps Sass and JavaScript in `themes/example/assets/`. The head uses
-`resources.Get`, `css.Sass`, and `js.Build`. Development builds keep source maps
-and readable output. Production builds minify and fingerprint files.
+The theme keeps Sass and JavaScript in `themes/example/assets/`. `main.scss` is
+only an entry point. It loads small modules for base rules, layout, content, and
+components. `main.js` only starts the code-copy and JavaScript-status modules.
+Split a module again when it takes on more than one job.
+
+The head uses `resources.Get`, `css.Sass`, and `js.Build`. Hugo follows Sass
+`@use` rules and JavaScript `import` statements, then makes one browser asset.
+Development builds keep source maps and readable output. Production builds
+minify and fingerprint files.
+
+The container mounts source files as read-only. `build.noJSConfigInAssets = true`
+stops Hugo from writing an editor helper file during the build. A project that
+wants Hugo to manage that file can keep the default value.
 
 ```go-html-template
 {{ with resources.Get "js/main.js" | js.Build $opts | fingerprint }}

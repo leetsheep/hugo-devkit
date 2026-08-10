@@ -9,6 +9,9 @@ theme = ['example']
 timeZone = 'Europe/Berlin'
 title = 'Hugo Devkit'
 
+[build]
+  noJSConfigInAssets = true
+
 [params]
   dateFormat = ':date_long'
   description = 'Small, working examples of native Hugo features and good defaults.'
