@@ -1,0 +1,22 @@
+skip_to_content: Skip to content
+feature_guides: Feature guides
+on_this_page: On this page
+page_count:
+  one: 1 page
+  other: "{{ .Count }} pages"
+no_pages: No pages yet.
+minute_read:
+  one: 1 min read
+  other: "{{ .Count }} min read"
+related_pages: Related pages
+downloads: Downloads
+breadcrumbs: Breadcrumbs
+main_navigation: Main navigation
+section_navigation: More in this section
+link_to_heading: Link to this heading
+not_found: Page not found
+not_found_help: The link may be old, or the page may have moved.
+return_home: Return to the home page
+javascript_disabled: JavaScript disabled
+copy_code: Copy code
+code_copied: Copied

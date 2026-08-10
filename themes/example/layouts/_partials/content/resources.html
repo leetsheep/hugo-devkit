@@ -1,0 +1,10 @@
+{{ with .Resources.ByType "application" }}
+  <aside class="downloads" aria-labelledby="downloads-heading">
+    <h2 id="downloads-heading">{{ i18n "downloads" }}</h2>
+    <ul>
+      {{ range . }}
+        <li><a href="{{ .RelPermalink }}" download>{{ .Title | default .Name }}</a></li>
+      {{ end }}
+    </ul>
+  </aside>
+{{ end }}

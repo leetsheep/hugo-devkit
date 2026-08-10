@@ -3,12 +3,17 @@
   <head>
     {{ partial "head.html" . }}
   </head>
-  <body>
+  <body data-copy-label="{{ i18n `copy_code` }}" data-copied-label="{{ i18n `code_copied` }}">
+    <a class="skip-link" href="#main-content">{{ i18n "skip_to_content" }}</a>
     <header class="site-header">
-      <a class="site-title" href="{{ site.Home.RelPermalink }}">{{ site.Title }}</a>
+      <div class="header-inner">
+        <a class="site-title" href="{{ site.Home.RelPermalink }}">{{ site.Title }}</a>
+        {{ partial "navigation/menu.html" (dict "menuID" "main" "page" .) }}
+      </div>
     </header>
 
-    <main class="site-main">
+    <main class="site-main" id="main-content">
+      {{ partial "navigation/breadcrumbs.html" . }}
       {{ block "main" . }}{{ end }}
     </main>
 

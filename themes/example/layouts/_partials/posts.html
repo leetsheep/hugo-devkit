@@ -1,12 +1,11 @@
-{{ with where site.RegularPages "Section" "posts" }}
+{{ with first 3 (where site.RegularPages.ByDate.Reverse "Section" "posts") }}
   <section class="page-list" aria-labelledby="posts-heading">
     <h2 id="posts-heading">Posts</h2>
 
-    {{ range . }}
-      <article>
-        <h3><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h3>
-        {{ with .Summary }}{{ . }}{{ end }}
-      </article>
-    {{ end }}
+    <div class="page-list">
+      {{ range . }}
+        {{ partial "content/card.html" . }}
+      {{ end }}
+    </div>
   </section>
 {{ end }}

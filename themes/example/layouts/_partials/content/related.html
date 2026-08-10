@@ -1,0 +1,12 @@
+{{ if .IsPage }}
+  {{ with site.RegularPages.Related . | first 3 }}
+    <aside class="related" aria-labelledby="related-heading">
+      <h2 id="related-heading">{{ i18n "related_pages" }}</h2>
+      <ul>
+        {{ range . }}
+          <li><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></li>
+        {{ end }}
+      </ul>
+    </aside>
+  {{ end }}
+{{ end }}

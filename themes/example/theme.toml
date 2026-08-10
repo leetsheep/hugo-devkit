@@ -1,11 +1,11 @@
 name = 'example'
 license = 'MIT'
 licenselink = 'https://opensource.org/license/mit'
-description = 'A minimal verification theme for hugo-devkit.'
+description = 'A concise guide to native Hugo features and good defaults.'
 homepage = 'https://example.org/'
-tags = ['minimal', 'example']
-features = ['responsive']
-min_version = '0.146.0'
+tags = ['documentation', 'example', 'responsive']
+features = ['assets', 'content', 'menus', 'taxonomies']
+min_version = '0.162.0'
 
 [author]
   name = 'hugo-devkit'

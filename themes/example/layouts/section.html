@@ -3,11 +3,12 @@
     <h1>{{ .Title }}</h1>
     {{ .Content }}
 
-    {{ range .Pages }}
-      <article>
-        <h2><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h2>
-        {{ with .Summary }}{{ . }}{{ end }}
-      </article>
-    {{ end }}
+    {{ $paginator := .Paginate .RegularPages.ByWeight }}
+    <div class="page-list">
+      {{ range $paginator.Pages }}
+        {{ partial "content/card.html" . }}
+      {{ end }}
+    </div>
+    {{ partial "pagination.html" . }}
   </section>
 {{ end }}

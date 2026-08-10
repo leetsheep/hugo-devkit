@@ -1,0 +1,1 @@
+Files in static are copied as-is. Prefer assets when Hugo should transform a file.

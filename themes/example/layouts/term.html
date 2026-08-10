@@ -1,12 +1,16 @@
 {{ define "main" }}
   <section class="content">
     <h1>{{ .Title }}</h1>
+    {{ .Content }}
 
-    {{ range .Data.Terms.Alphabetical }}
-      <article>
-        <h2><a href="{{ .Page.RelPermalink }}">{{ .Page.LinkTitle }}</a></h2>
-        <p>{{ .Count }} page{{ if ne .Count 1 }}s{{ end }}</p>
-      </article>
-    {{ end }}
+    {{ $paginator := .Paginate .RegularPages.ByDate.Reverse }}
+    <div class="page-list">
+      {{ range $paginator.Pages }}
+        {{ partial "content/card.html" . }}
+      {{ else }}
+        <p>{{ i18n "no_pages" }}</p>
+      {{ end }}
+    </div>
+    {{ partial "pagination.html" . }}
   </section>
 {{ end }}

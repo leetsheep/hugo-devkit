@@ -1,0 +1,12 @@
+{{ $resource := .Page.Resources.GetMatch .Destination }}
+{{ with $resource }}
+  {{ if eq .ResourceType "image" }}
+    {{ $image := .Resize "960x webp q82" }}
+    <figure>
+      <img src="{{ $image.RelPermalink }}" width="{{ $image.Width }}" height="{{ $image.Height }}" alt="{{ $.Text }}" loading="lazy">
+      {{ with $.Title }}<figcaption>{{ . }}</figcaption>{{ end }}
+    </figure>
+  {{ end }}
+{{ else }}
+  <img src="{{ .Destination | safeURL }}" alt="{{ .Text }}"{{ with .Title }} title="{{ . }}"{{ end }} loading="lazy">
+{{ end }}

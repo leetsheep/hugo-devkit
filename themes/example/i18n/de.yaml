@@ -1,0 +1,22 @@
+skip_to_content: Zum Inhalt
+feature_guides: Anleitungen
+on_this_page: Auf dieser Seite
+page_count:
+  one: 1 Seite
+  other: "{{ .Count }} Seiten"
+no_pages: Noch keine Seiten.
+minute_read:
+  one: 1 Min. Lesezeit
+  other: "{{ .Count }} Min. Lesezeit"
+related_pages: Ähnliche Seiten
+downloads: Downloads
+breadcrumbs: Brotkrümelnavigation
+main_navigation: Hauptnavigation
+section_navigation: Mehr in diesem Bereich
+link_to_heading: Link zu dieser Überschrift
+not_found: Seite nicht gefunden
+not_found_help: Der Link ist vielleicht alt oder die Seite wurde verschoben.
+return_home: Zur Startseite
+javascript_disabled: JavaScript inaktiv
+copy_code: Code kopieren
+code_copied: Kopiert

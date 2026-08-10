@@ -17,6 +17,6 @@
     {{ with $jsDisabledIcon }}
       <span class="js-status__icon js-status__icon--disabled" data-js-status-disabled-icon aria-hidden="true">{{ .Content | safeHTML }}</span>
     {{ end }}
-    <span data-js-status-label>JavaScript disabled</span>
+    <span data-js-status-label>{{ i18n "javascript_disabled" }}</span>
   </span>
 </small>

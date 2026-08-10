@@ -6,11 +6,15 @@
   --color-muted: #{$color-muted};
   --color-link: #{$color-link};
   --color-line: #{$color-line};
+  --color-surface: #{$color-surface};
+  --color-code: #{$color-code};
   --color-success: #{$color-success};
   --color-danger: #{$color-danger};
   --space-page: #{$space-page};
   --width-content: #{$width-content};
+  --width-reading: #{$width-reading};
   --font-sans: #{$font-sans};
+  --font-mono: #{$font-mono};
 }
 
 * {
@@ -28,6 +32,41 @@ body {
 
 a {
   color: var(--color-link);
+  text-underline-offset: 0.16em;
+}
+
+a:hover {
+  text-decoration-thickness: 0.14em;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+code,
+pre {
+  font-family: var(--font-mono);
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-link);
+  outline-offset: 3px;
+}
+
+.skip-link {
+  position: fixed;
+  z-index: 10;
+  top: 0.5rem;
+  left: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  color: var(--color-bg);
+  background: var(--color-fg);
+  transform: translateY(-150%);
+}
+
+.skip-link:focus {
+  transform: translateY(0);
 }
 
 .site-header,
@@ -46,13 +85,211 @@ a {
   border-bottom: 1px solid var(--color-line);
 }
 
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem 2rem;
+}
+
 .site-title {
   font-weight: 700;
   text-decoration: none;
 }
 
+.site-nav ul,
+.breadcrumbs ol {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.site-nav a {
+  text-decoration: none;
+}
+
+.site-nav a[aria-current] {
+  text-decoration: underline;
+  text-decoration-thickness: 0.14em;
+}
+
 .site-main {
   padding-block: 3rem;
+}
+
+.breadcrumbs {
+  margin-block-end: 2rem;
+  color: var(--color-muted);
+  font-size: 0.9rem;
+}
+
+.breadcrumbs li + li::before {
+  margin-inline-end: 1rem;
+  content: "/";
+}
+
+.intro,
+.content,
+.related,
+.downloads,
+.page-nav {
+  max-width: var(--width-reading);
+}
+
+.intro {
+  margin-block-end: 3rem;
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: clamp(2rem, 7vw, 3.75rem);
+}
+
+h2 {
+  margin-block-start: 2.5rem;
+}
+
+.heading-link {
+  color: var(--color-muted);
+  font-size: 0.7em;
+  font-weight: 400;
+  text-decoration: none;
+}
+
+.content-meta,
+.eyebrow {
+  color: var(--color-muted);
+  font-size: 0.9rem;
+}
+
+.content-meta {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.card-grid,
+.page-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+  gap: 1rem;
+}
+
+.card {
+  padding: 1rem 1.25rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: 0.35rem;
+}
+
+.card h3,
+.card h2 {
+  margin-block: 0 0.5rem;
+}
+
+.card p:last-child {
+  margin-block-end: 0;
+}
+
+.toc,
+.callout,
+.downloads {
+  margin-block: 2rem;
+  padding: 1rem 1.25rem;
+  border-inline-start: 0.25rem solid var(--color-link);
+  background: var(--color-surface);
+}
+
+.toc h2,
+.downloads h2 {
+  margin-block-start: 0;
+  font-size: 1rem;
+}
+
+.callout > :first-child {
+  margin-block-start: 0;
+}
+
+.callout > :last-child {
+  margin-block-end: 0;
+}
+
+.highlight {
+  position: relative;
+  margin-block: 1.5rem;
+}
+
+.highlight pre,
+.content > pre {
+  overflow-x: auto;
+  padding: 1rem;
+  background: var(--color-code);
+  border-radius: 0.35rem;
+}
+
+.copy-button {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  padding: 0.3rem 0.5rem;
+  border: 1px solid var(--color-line);
+  border-radius: 0.25rem;
+  background: var(--color-surface);
+  font: inherit;
+  cursor: pointer;
+}
+
+figure {
+  margin: 2rem 0;
+}
+
+figure img {
+  display: block;
+  border-radius: 0.35rem;
+}
+
+figcaption {
+  margin-block-start: 0.5rem;
+  color: var(--color-muted);
+  font-size: 0.9rem;
+}
+
+.related,
+.downloads,
+.page-nav {
+  margin-block-start: 3rem;
+}
+
+.page-nav {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-block-start: 1rem;
+  border-top: 1px solid var(--color-line);
+}
+
+.pagination ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 0;
+  list-style: none;
+}
+
+.pagination a {
+  display: block;
+  min-width: 2.5rem;
+  padding: 0.4rem 0.65rem;
+  text-align: center;
+  border: 1px solid var(--color-line);
+  border-radius: 0.25rem;
 }
 
 .site-footer {
@@ -96,4 +333,21 @@ a {
   width: 100%;
   height: 100%;
   stroke: currentColor;
+}
+
+@media (max-width: 40rem) {
+  .header-inner {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .site-main {
+    padding-block: 2rem;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
 }
