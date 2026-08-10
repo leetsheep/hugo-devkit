@@ -15,9 +15,3 @@ and archetypes in the theme.
 The guides cover Hugo's main native systems. They do not copy the function
 reference or add a demo for every function. That would hide the useful patterns.
 {{< /callout >}}
-
-## References
-
-- [Hugo documentation](https://gohugo.io/documentation/)
-- [Directory structure](https://gohugo.io/getting-started/directory-structure/)
-- [Host and deploy](https://gohugo.io/host-and-deploy/)

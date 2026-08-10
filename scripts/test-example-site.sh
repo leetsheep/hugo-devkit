@@ -111,6 +111,7 @@ done
 
 assert_contains index.html 'Feature guides'
 assert_contains index.html 'callout--note'
+assert_contains index.html 'id=references'
 assert_contains guides.json '"guides"'
 assert_contains guides.json '"version":"[0-9]'
 assert_contains guides/resources/index.html '\.webp'
