@@ -1,0 +1,12 @@
+name = 'tests'
+license = 'MIT'
+licenselink = 'https://opensource.org/license/mit'
+description = 'Compatibility fixtures for Hugo version upgrades.'
+homepage = 'https://example.org/'
+tags = ['testing', 'compatibility']
+features = ['native-functions', 'asset-pipeline', 'multilingual']
+min_version = '0.162.1'
+
+[author]
+  name = 'hugo-devkit'
+

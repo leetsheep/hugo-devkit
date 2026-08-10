@@ -1,0 +1,10 @@
+{{ define "main" }}
+  <section class="content" data-compatibility-page="section">
+    <h1>{{ .Title }}</h1>
+    {{ .Content }}
+    {{ range .Paginator.Pages }}
+      <article><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></article>
+    {{ end }}
+  </section>
+{{ end }}
+

@@ -1,0 +1,19 @@
+{{- $scratch := .scratch -}}
+{{- $page := .page -}}
+{{- $regular := index (where site.RegularPages "Title" "About Hugo") 0 -}}
+{{- $section := site.GetPage "/posts" -}}
+{{- partial "compatibility/assert-true.html" (dict "scratch" $scratch "id" "feature.page-kinds" "actual" (and $page.IsHome (eq $regular.Kind "page") (eq $section.Kind "section"))) -}}
+{{- partial "compatibility/assert-equal.html" (dict "scratch" $scratch "id" "feature.multilingual" "actual" (len site.Home.AllTranslations) "expected" 2) -}}
+{{- partial "compatibility/assert-equal.html" (dict "scratch" $scratch "id" "feature.menus" "actual" (len site.Menus.main) "expected" 2) -}}
+{{- partial "compatibility/assert-true.html" (dict "scratch" $scratch "id" "feature.taxonomies" "actual" (gt (len site.Taxonomies.tags) 0)) -}}
+{{- $bundle := index (where site.RegularPages "Title" "Second Bundle") 0 -}}
+{{- partial "compatibility/assert-true.html" (dict "scratch" $scratch "id" "feature.page-resource" "actual" ($bundle.Resources.GetMatch "fixture.txt")) -}}
+{{- $first := index (where site.RegularPages "Title" "First Post") 0 -}}
+{{- partial "compatibility/assert-true.html" (dict "scratch" $scratch "id" "feature.related" "actual" (gt (len (site.RegularPages.Related $first)) 0)) -}}
+{{- partial "compatibility/assert-true.html" (dict "scratch" $scratch "id" "feature.pagination" "actual" (gt $page.Paginator.TotalPages 1)) -}}
+{{- $dataOK := and
+  (eq (cast.ToInt (index hugo.Data "fixture-json").answer) 42)
+  (eq (cast.ToInt (index hugo.Data "fixture-toml").answer) 42)
+  (eq (cast.ToInt (index hugo.Data "fixture-yaml").answer) 42)
+-}}
+{{- partial "compatibility/assert-true.html" (dict "scratch" $scratch "id" "feature.data-formats" "actual" $dataOK) -}}

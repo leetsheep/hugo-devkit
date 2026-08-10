@@ -1,0 +1,21 @@
+{{- $scratch := .scratch -}}
+{{- $values := collections.Slice 1 2 3 4 -}}
+{{- partial "compatibility/assert-equal.html" (dict "scratch" $scratch "id" "collections.after" "actual" (collections.After 2 $values) "expected" (slice 3 4)) -}}
+{{- partial "compatibility/assert-equal.html" (dict "scratch" $scratch "id" "collections.append" "actual" ($values | collections.Append 5) "expected" (slice 1 2 3 4 5)) -}}
+{{- partial "compatibility/assert-equal.html" (dict "scratch" $scratch "id" "collections.complement" "actual" (collections.Complement (slice 1 2) (slice 1 2 3)) "expected" (slice 3)) -}}
+{{- partial "compatibility/assert-equal.html" (dict "scratch" $scratch "id" "collections.delimit" "actual" (collections.Delimit (slice "a" "b" "c") ", " " and ") "expected" "a, b and c") -}}
+{{- partial "compatibility/assert-equal.html" (dict "scratch" $scratch "id" "collections.first" "actual" (collections.First 2 $values) "expected" (slice 1 2)) -}}
+{{- partial "compatibility/assert-true.html" (dict "scratch" $scratch "id" "collections.in" "actual" (collections.In $values 3)) -}}
+{{- partial "compatibility/assert-equal.html" (dict "scratch" $scratch "id" "collections.index" "actual" (collections.Index $values 2) "expected" 3) -}}
+{{- partial "compatibility/assert-true.html" (dict "scratch" $scratch "id" "collections.isset" "actual" (collections.IsSet (dict "answer" 42) "answer")) -}}
+{{- partial "compatibility/assert-equal.html" (dict "scratch" $scratch "id" "collections.last" "actual" (collections.Last 2 $values) "expected" (slice 3 4)) -}}
+{{- $merged := collections.Merge (dict "answer" 42) (dict "enabled" true) -}}
+{{- partial "compatibility/assert-true.html" (dict "scratch" $scratch "id" "collections.merge" "actual" (and (eq $merged.answer 42) $merged.enabled)) -}}
+{{- partial "compatibility/assert-equal.html" (dict "scratch" $scratch "id" "collections.querify" "actual" (collections.Querify "answer" 42 "enabled" true) "expected" "answer=42&enabled=true") -}}
+{{- partial "compatibility/assert-equal.html" (dict "scratch" $scratch "id" "collections.reverse" "actual" (collections.Reverse $values) "expected" (slice 4 3 2 1)) -}}
+{{- partial "compatibility/assert-equal.html" (dict "scratch" $scratch "id" "collections.seq" "actual" (collections.Seq 4) "expected" $values) -}}
+{{- partial "compatibility/assert-equal.html" (dict "scratch" $scratch "id" "collections.slice" "actual" $values "expected" (slice 1 2 3 4)) -}}
+{{- partial "compatibility/assert-equal.html" (dict "scratch" $scratch "id" "collections.sort" "actual" (collections.Sort (slice 3 1 2)) "expected" (slice 1 2 3)) -}}
+{{- partial "compatibility/assert-equal.html" (dict "scratch" $scratch "id" "collections.symdiff" "actual" (collections.SymDiff (slice 1 2) (slice 2 3)) "expected" (slice 3 1)) -}}
+{{- partial "compatibility/assert-equal.html" (dict "scratch" $scratch "id" "collections.union" "actual" (collections.Union (slice 1 2) (slice 2 3)) "expected" (slice 1 2 3)) -}}
+{{- partial "compatibility/assert-equal.html" (dict "scratch" $scratch "id" "collections.uniq" "actual" (collections.Uniq (slice 1 2 1 3)) "expected" (slice 1 2 3)) -}}

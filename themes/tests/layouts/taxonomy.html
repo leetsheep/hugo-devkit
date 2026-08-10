@@ -1,0 +1,7 @@
+{{ define "main" }}
+  <section class="content" data-compatibility-page="taxonomy">
+    <h1>{{ .Title }}</h1>
+    {{ range .Pages }}<a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>{{ end }}
+  </section>
+{{ end }}
+

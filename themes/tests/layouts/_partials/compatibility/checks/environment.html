@@ -1,0 +1,23 @@
+{{- $scratch := .scratch -}}
+{{- $page := .page -}}
+{{- partial "compatibility/assert-true.html" (dict "scratch" $scratch "id" "hugo.version" "actual" (ne (cast.ToString hugo.Version) "")) -}}
+{{- partial "compatibility/assert-true.html" (dict "scratch" $scratch "id" "hugo.environment" "actual" (collections.In (slice "production" "development") hugo.Environment)) -}}
+{{- partial "compatibility/assert-true.html" (dict "scratch" $scratch "id" "hugo.extended" "actual" hugo.IsExtended) -}}
+{{- partial "compatibility/assert-true.html" (dict "scratch" $scratch "id" "hugo.multilingual" "actual" hugo.IsMultilingual) -}}
+{{- partial "compatibility/assert-equal.html" (dict "scratch" $scratch "id" "hugo.sites" "actual" (len hugo.Sites) "expected" 2) -}}
+{{- $expectedServer := eq site.Params.compatibilityMode "server" -}}
+{{- partial "compatibility/assert-equal.html" (dict "scratch" $scratch "id" "hugo.server-mode" "actual" hugo.IsServer "expected" $expectedServer) -}}
+{{- partial "compatibility/assert-equal.html" (dict "scratch" $scratch "id" "os.getenv" "actual" (os.Getenv "HUGO_COMPATIBILITY_SENTINEL") "expected" "available") -}}
+{{- partial "compatibility/assert-true.html" (dict "scratch" $scratch "id" "os.file-exists" "actual" (os.FileExists "data/fixture-json.json")) -}}
+{{- partial "compatibility/assert-true.html" (dict "scratch" $scratch "id" "os.read-file" "actual" (strings.Contains (os.ReadFile "data/fixture-json.json") "42")) -}}
+{{- partial "compatibility/assert-true.html" (dict "scratch" $scratch "id" "templates.exists" "actual" (templates.Exists "home.html")) -}}
+{{- $fixtureTime := time.AsTime "2025-01-02T03:04:05Z" -}}
+{{- partial "compatibility/assert-equal.html" (dict "scratch" $scratch "id" "time.as-time" "actual" $fixtureTime.Year "expected" 2025) -}}
+{{- partial "compatibility/assert-equal.html" (dict "scratch" $scratch "id" "time.duration" "actual" (time.Duration "hour" 1).Minutes "expected" 60.0) -}}
+{{- partial "compatibility/assert-equal.html" (dict "scratch" $scratch "id" "time.format" "actual" (time.Format "2006-01-02" $fixtureTime) "expected" "2025-01-02") -}}
+{{- partial "compatibility/assert-equal.html" (dict "scratch" $scratch "id" "transform.html-escape" "actual" (transform.HTMLEscape "<b>") "expected" "&lt;b&gt;") -}}
+{{- partial "compatibility/assert-equal.html" (dict "scratch" $scratch "id" "transform.html-unescape" "actual" (transform.HTMLUnescape "&lt;b&gt;") "expected" "<b>") -}}
+{{- partial "compatibility/assert-true.html" (dict "scratch" $scratch "id" "transform.markdownify" "actual" (strings.Contains (transform.Markdownify "**Hugo**") "<strong>Hugo</strong>")) -}}
+{{- partial "compatibility/assert-equal.html" (dict "scratch" $scratch "id" "transform.plainify" "actual" (transform.Plainify "<strong>Hugo</strong>") "expected" "Hugo") -}}
+{{- $unmarshaled := transform.Unmarshal "{\"answer\":42}" -}}
+{{- partial "compatibility/assert-equal.html" (dict "scratch" $scratch "id" "transform.unmarshal" "actual" $unmarshaled.answer "expected" 42) -}}

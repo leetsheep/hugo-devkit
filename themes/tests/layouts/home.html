@@ -1,0 +1,12 @@
+{{ define "main" }}
+  <section class="intro" data-compatibility-page="home">
+    <h1>{{ .Title }}</h1>
+    {{ .Content }}
+    <p>{{ i18n "compatibility_status" }}</p>
+  </section>
+
+  {{ if eq .Language.Lang "en" }}
+    {{ partial "compatibility/run.html" . }}
+  {{ end }}
+  {{ partial "posts.html" . }}
+{{ end }}
