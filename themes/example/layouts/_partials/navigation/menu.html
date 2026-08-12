@@ -1,15 +1,24 @@
 {{ $page := .page }}
+{{ $labelKeys := dict
+  "guides" "menu_guides"
+  "posts" "menu_posts"
+  "references" "menu_references"
+  "search" "menu_search"
+  "tags" "menu_tags"
+}}
 {{ with index site.Menus .menuID }}
   <nav class="site-nav" aria-label="{{ i18n `main_navigation` }}">
     <ul>
       {{ range . }}
-        <li>
-          <a href="{{ .URL }}"{{ if eq .Identifier "search" }} class="search-link"{{ end }}{{ if $page.IsMenuCurrent $.menuID . }} aria-current="page"{{ else if $page.HasMenuCurrent $.menuID . }} aria-current="true"{{ end }}>
+        {{ $name := .Name }}
+        {{ with index $labelKeys .Identifier }}{{ $name = i18n . }}{{ end }}
+        <li{{ if eq .Identifier "search" }} class="search-item"{{ end }}>
+          <a href="{{ .URL }}"{{ if eq .Identifier "search" }} class="search-link header-action"{{ end }}{{ if $page.IsMenuCurrent $.menuID . }} aria-current="page"{{ else if $page.HasMenuCurrent $.menuID . }} aria-current="true"{{ end }}>
             {{ if eq .Identifier "search" }}
-              <span class="visually-hidden">{{ .Name }}</span>
+              <span class="visually-hidden">{{ $name }}</span>
               {{ partialCached "icons/search.html" . }}
             {{ else }}
-              {{ .Name }}
+              {{ $name }}
             {{ end }}
           </a>
         </li>

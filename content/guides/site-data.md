@@ -17,6 +17,14 @@ title = 'Multilingual sites'
 url = 'https://gohugo.io/content-management/multilingual/'
 
 [[params.references]]
+title = 'Configure languages'
+url = 'https://gohugo.io/configuration/languages/'
+
+[[params.references]]
+title = 'All translations'
+url = 'https://gohugo.io/methods/page/alltranslations/'
+
+[[params.references]]
 title = 'Internationalization'
 url = 'https://gohugo.io/functions/lang/translate/'
 
@@ -66,9 +74,20 @@ data file.
 template calls `i18n "skip_to_content"`. Content stays in its content file; UI
 labels stay in the language catalog.
 
-The example publishes English only, so it does not duplicate every guide. Add a
-language in `hugo.toml` and a matching content tree when the site has translated
-content. Hugo then builds one site per language and links translations.
+## Content translations
+
+`hugo.toml` configures English and German with modern `label` and `locale`
+values. Files with a language suffix form a translation pair:
+
+```text
+content/guides/site-data.md
+content/guides/site-data.de.md
+```
+
+The language switcher uses `.AllTranslations` to keep the reader on the same
+page. If that translation does not exist, it links to the target language home
+page. The theme keeps the switcher markup, behavior, and style in separate small
+modules.
 
 ## Build environment
 

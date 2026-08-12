@@ -34,5 +34,12 @@ search_site: Search this site
 search_loading: Loading search index…
 search_error: Search is unavailable.
 search_empty: No pages found.
-search_results: "{count} pages found."
+search_result_one: "{count} page found."
+search_result_other: "{count} pages found."
 search_requires_javascript: Search requires JavaScript.
+select_language: Select language
+menu_guides: Guides
+menu_posts: Posts
+menu_tags: Tags
+menu_references: References
+menu_search: Search

@@ -78,7 +78,10 @@ export function enableSearch() {
     const results = findPages(pages, query);
     renderResults(results, list);
     status.textContent = results.length
-      ? form.dataset.resultsLabel.replace("{count}", results.length)
+      ? (results.length === 1
+          ? form.dataset.resultOneLabel
+          : form.dataset.resultOtherLabel
+        ).replace("{count}", results.length)
       : form.dataset.emptyLabel;
   }
 

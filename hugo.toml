@@ -2,7 +2,6 @@ baseURL = 'https://example.org/'
 copyright = 'Example code is available under the repository license.'
 defaultContentLanguage = 'en'
 enableRobotsTXT = true
-locale = 'en-US'
 pagination.pagerSize = 4
 summaryLength = 24
 theme = ['example']
@@ -15,6 +14,17 @@ title = 'Hugo Devkit'
 [params]
   dateFormat = ':date_long'
   description = 'Small, working examples of native Hugo features and good defaults.'
+
+[languages]
+  [languages.en]
+    label = 'English'
+    locale = 'en-US'
+    weight = 1
+
+  [languages.de]
+    label = 'Deutsch'
+    locale = 'de-DE'
+    weight = 2
 
 [taxonomies]
   category = 'categories'

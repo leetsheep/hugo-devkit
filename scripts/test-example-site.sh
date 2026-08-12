@@ -84,6 +84,10 @@ for path in \
   404.html \
   example.txt \
   guides.json \
+  de/guides/site-data/index.html \
+  de/index.html \
+  de/search/index.html \
+  de/search-index.json \
   guides/content/index.html \
   guides/navigation/index.html \
   guides/output/index.html \
@@ -135,6 +139,14 @@ assert_contains guides/templates/index.html 'id=copy-button-template'
 assert_contains guides/templates/index.html 'class="?copy-icon"?'
 assert_contains guides/templates/index.html 'class="?check-icon"?'
 assert_contains index.html 'class="?search-icon"?'
+assert_contains index.html 'class="?language-switcher"?'
+assert_contains index.html 'href=/de/'
+assert_contains guides/site-data/index.html 'href=/de/guides/site-data/'
+assert_contains guides/templates/index.html 'href=/de/'
+assert_contains de/guides/site-data/index.html 'lang=de-DE'
+assert_contains de/guides/site-data/index.html 'Sprache auswählen'
+assert_contains de/guides/site-data/index.html '>Anleitungen<'
+assert_contains de/search-index.json 'Konfiguration, Daten und Sprachen'
 assert_contains search/index.html 'data-search-form'
 assert_contains search/index.html 'data-search-index=/search-index\.json'
 assert_contains search/index.html 'themes/example/layouts/search\.html'

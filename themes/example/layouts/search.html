@@ -7,7 +7,8 @@
       {{ with site.Home.OutputFormats.Get "searchIndex" }}
         <form class="search-form" role="search" data-search-form data-search-index="{{ .RelPermalink }}"
           data-loading-label="{{ i18n `search_loading` }}" data-error-label="{{ i18n `search_error` }}"
-          data-empty-label="{{ i18n `search_empty` }}" data-results-label="{{ i18n `search_results` }}">
+          data-empty-label="{{ i18n `search_empty` }}" data-result-one-label="{{ i18n `search_result_one` }}"
+          data-result-other-label="{{ i18n `search_result_other` }}">
           <label for="site-search">{{ i18n "search_site" }}</label>
           <div class="search-form__controls">
             <input id="site-search" name="q" type="search" required autocomplete="off">

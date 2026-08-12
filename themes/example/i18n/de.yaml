@@ -34,5 +34,12 @@ search_site: Diese Website durchsuchen
 search_loading: Suchindex wird geladen…
 search_error: Die Suche ist nicht verfügbar.
 search_empty: Keine Seiten gefunden.
-search_results: "{count} Seiten gefunden."
+search_result_one: "{count} Seite gefunden."
+search_result_other: "{count} Seiten gefunden."
 search_requires_javascript: Die Suche benötigt JavaScript.
+select_language: Sprache auswählen
+menu_guides: Anleitungen
+menu_posts: Beiträge
+menu_tags: Tags
+menu_references: Referenzen
+menu_search: Suche
