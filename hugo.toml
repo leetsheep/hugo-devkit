@@ -21,13 +21,19 @@ title = 'Hugo Devkit'
   tag = 'tags'
 
 [outputs]
-  home = ['html', 'rss', 'guideIndex']
+  home = ['html', 'rss', 'guideIndex', 'searchIndex']
   section = ['html', 'rss']
   taxonomy = ['html', 'rss']
   term = ['html', 'rss']
 
 [outputFormats.guideIndex]
   baseName = 'guides'
+  isPlainText = true
+  mediaType = 'application/json'
+  notAlternative = true
+
+[outputFormats.searchIndex]
+  baseName = 'search-index'
   isPlainText = true
   mediaType = 'application/json'
   notAlternative = true
@@ -71,6 +77,12 @@ title = 'Hugo Devkit'
     name = 'References'
     pageRef = '/references'
     weight = 40
+
+  [[menus.main]]
+    identifier = 'search'
+    name = 'Search'
+    pageRef = '/search'
+    weight = 50
 
 [security]
   [security.funcs]

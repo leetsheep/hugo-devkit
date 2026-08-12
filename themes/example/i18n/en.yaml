@@ -29,3 +29,10 @@ page_sources: Page sources
 page_support: Page details
 source_content: Content
 source_layouts: Layouts
+search: Search
+search_site: Search this site
+search_loading: Loading search index…
+search_error: Search is unavailable.
+search_empty: No pages found.
+search_results: "{count} pages found."
+search_requires_javascript: Search requires JavaScript.

@@ -29,3 +29,10 @@ page_sources: Seitenquellen
 page_support: Seitendetails
 source_content: Inhalt
 source_layouts: Layouts
+search: Suche
+search_site: Diese Website durchsuchen
+search_loading: Suchindex wird geladen…
+search_error: Die Suche ist nicht verfügbar.
+search_empty: Keine Seiten gefunden.
+search_results: "{count} Seiten gefunden."
+search_requires_javascript: Die Suche benötigt JavaScript.

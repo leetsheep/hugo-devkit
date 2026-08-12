@@ -97,6 +97,8 @@ for path in \
   posts/page/2/index.html \
   references/index.html \
   robots.txt \
+  search/index.html \
+  search-index.json \
   site.webmanifest \
   sitemap.xml \
   tags/content/index.html
@@ -113,7 +115,8 @@ for page in \
   guides/resources/index.html \
   guides/site-data/index.html \
   guides/templates/index.html \
-  posts/index.html
+  posts/index.html \
+  search/index.html
 do
   assert_contains "$page" 'class=references'
   assert_contains "$page" 'class=heading-link href=#references'
@@ -131,6 +134,15 @@ assert_contains guides/templates/index.html 'class="?external-link-icon"?'
 assert_contains guides/templates/index.html 'id=copy-button-template'
 assert_contains guides/templates/index.html 'class="?copy-icon"?'
 assert_contains guides/templates/index.html 'class="?check-icon"?'
+assert_contains index.html 'class="?search-icon"?'
+assert_contains search/index.html 'data-search-form'
+assert_contains search/index.html 'data-search-index=/search-index\.json'
+assert_contains search/index.html 'themes/example/layouts/search\.html'
+assert_contains search-index.json 'Templates and Markdown hooks'
+if grep -F '"title":"Search"' "$OUTPUT_ROOT/search-index.json" >/dev/null 2>&1; then
+  printf 'error: search page must not appear in the search index\n' >&2
+  exit 1
+fi
 assert_contains posts/index.html 'posts/page/2/'
 assert_contains posts/page/2/index.html '>Hugo Devkit<'
 assert_contains posts/check-generated-output/index.html 'class=content-type>Post'
@@ -146,6 +158,7 @@ for page in \
   guides/content/index.html \
   posts/index.html \
   posts/page/2/index.html \
+  search/index.html \
   tags/index.html \
   tags/content/index.html
 do
