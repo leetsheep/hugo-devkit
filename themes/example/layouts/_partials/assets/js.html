@@ -6,7 +6,7 @@
   }}
   {{ with . | js.Build $opts }}
     {{ if hugo.IsDevelopment }}
-      <script defer src="{{ .RelPermalink }}"></script>
+      <script defer src="{{ .RelPermalink }}?v={{ .Content | hash.XxHash }}"></script>
     {{ else }}
       {{ with . | fingerprint }}
         <script defer src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous"></script>

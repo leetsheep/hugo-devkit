@@ -60,10 +60,11 @@ the start of the template. Small partials make context easier to see.
 
 ## Partials and cached partials
 
-The theme groups partials by job: `assets`, `content`, and `navigation`. The CSS
-and JavaScript partials use `partialCached` because their result is the same for
-every page in one build. Do not cache a partial that depends on page data unless
-the page is part of its cache key.
+The theme groups partials by job: `assets`, `content`, and `navigation`. In a
+production build, the CSS and JavaScript partials use `partialCached` because
+their result is the same for every page. Development uses normal partials so
+Hugo live reload sees asset changes. Do not cache a partial that depends on page
+data unless the page is part of its cache key.
 
 ## Page reference lists
 

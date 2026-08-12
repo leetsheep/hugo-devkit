@@ -71,7 +71,8 @@ Split a module again when it takes on more than one job.
 The head uses `resources.Get`, `css.Sass`, and `js.Build`. Hugo follows Sass
 `@use` rules and JavaScript `import` statements, then makes one browser asset.
 Development builds keep source maps and readable output. Production builds
-minify and fingerprint files.
+minify and fingerprint files. Development asset URLs include a small content
+hash, so live reload does not reuse an old browser cache entry.
 
 The container mounts source files as read-only. `build.noJSConfigInAssets = true`
 stops Hugo from writing an editor helper file during the build. A project that

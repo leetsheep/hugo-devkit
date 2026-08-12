@@ -13,5 +13,10 @@
 {{ end }}
 {{ partial "opengraph.html" . }}
 {{ partial "schema.html" . }}
-{{ partialCached "assets/css.html" . }}
-{{ partialCached "assets/js.html" . }}
+{{ if hugo.IsDevelopment }}
+  {{ partial "assets/css.html" . }}
+  {{ partial "assets/js.html" . }}
+{{ else }}
+  {{ partialCached "assets/css.html" . }}
+  {{ partialCached "assets/js.html" . }}
+{{ end }}

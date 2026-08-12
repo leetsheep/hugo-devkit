@@ -7,7 +7,7 @@
   }}
   {{ with . | css.Sass $opts }}
     {{ if hugo.IsDevelopment }}
-      <link rel="stylesheet" href="{{ .RelPermalink }}">
+      <link rel="stylesheet" href="{{ .RelPermalink }}?v={{ .Content | hash.XxHash }}">
     {{ else }}
       {{ with . | fingerprint }}
         <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous">
