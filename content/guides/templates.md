@@ -17,6 +17,10 @@ title = 'Partial templates'
 url = 'https://gohugo.io/templates/partials/'
 
 [[params.references]]
+title = 'Page variables'
+url = 'https://gohugo.io/methods/page/'
+
+[[params.references]]
 title = 'Render hooks'
 url = 'https://gohugo.io/render-hooks/'
 
@@ -45,6 +49,15 @@ only define the main block.
 
 This keeps the document shell in one place and lets Hugo's lookup rules select
 the page-specific template.
+
+## Page source labels
+
+The base template groups page sources and official references in one
+supplementary `aside`. Each item remains a separate `section`. The page-source
+partial reads `.File.Path` when content owns the page and maps `.Kind` to the
+primary layout. Generated taxonomy and error pages name their config or message
+source instead. This keeps the source paths accurate without client-side
+JavaScript.
 
 ## Context
 
@@ -78,7 +91,7 @@ url = 'https://gohugo.io/templates/partials/'
 ```
 
 The base template calls `partials/content/references.html` once, after the page
-block. The partial owns the shared HTML and full-width layout. Its heading uses
+block. The partial owns its shared HTML inside the full-width support area. Its heading uses
 the same small `heading-link.html` partial as Markdown headings, so both get the
 visible `#` link. Put records used by many pages in `data/` instead of copying
 them into page parameters.

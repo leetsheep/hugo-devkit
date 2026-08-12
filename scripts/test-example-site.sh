@@ -139,6 +139,24 @@ if [ "$(grep -o 'class=card' "$OUTPUT_ROOT/posts/index.html" | wc -l | tr -d ' '
   exit 1
 fi
 assert_contains 404.html 'Page not found'
+for page in \
+  404.html \
+  index.html \
+  guides/index.html \
+  guides/content/index.html \
+  posts/index.html \
+  posts/page/2/index.html \
+  tags/index.html \
+  tags/content/index.html
+do
+  assert_contains "$page" 'class="?page-sources'
+  assert_contains "$page" 'class=page-support'
+  assert_contains "$page" 'class=heading-link href=#page-sources'
+  assert_contains "$page" 'themes/example/layouts/baseof\.html'
+done
+assert_contains guides/content/index.html 'content/guides/content\.md'
+assert_contains tags/index.html 'themes/example/layouts/taxonomy\.html'
+assert_contains tags/content/index.html 'themes/example/layouts/term\.html'
 assert_contains guides/pages/index.html 'guides/content/'
 assert_contains site.webmanifest '"name": "Hugo Devkit"'
 

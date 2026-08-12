@@ -60,17 +60,54 @@
   font-size: 1rem;
 }
 
-.references {
-  padding-block: 2rem;
+.page-support {
+  margin-block-start: 3rem;
   background: var(--color-surface);
 }
 
-.references h2 {
+.page-support > section {
+  padding-block: 2rem;
+}
+
+.page-support > section + section {
+  padding-block-start: 0;
+}
+
+.references h2,
+.page-sources h2 {
   margin-block-start: 0;
 }
 
 .references li + li {
   margin-block-start: 0.35rem;
+}
+
+.page-sources h2 {
+  margin-block-end: 0.75rem;
+}
+
+.page-sources dl {
+  display: grid;
+  gap: 0.35rem;
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.page-sources dl > div {
+  display: grid;
+  grid-template-columns: 5rem minmax(0, 1fr);
+  gap: 0.75rem;
+}
+
+.page-sources dt {
+  color: var(--color-muted);
+}
+
+.page-sources dd {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 0.75rem;
+  margin: 0;
 }
 
 .callout > :first-child {
@@ -84,8 +121,7 @@
 .related,
 .downloads,
 .page-nav,
-.posts,
-.references {
+.posts {
   margin-block-start: 3rem;
 }
 
@@ -162,5 +198,10 @@
   .card-grid,
   .page-list {
     grid-template-columns: minmax(0, 1fr);
+  }
+
+  .page-sources dl > div {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.1rem;
   }
 }
