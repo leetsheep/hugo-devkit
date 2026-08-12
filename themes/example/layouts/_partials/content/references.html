@@ -1,0 +1,15 @@
+{{ with .Params.references }}
+  <section class="references" aria-labelledby="references">
+    <div class="site-container">
+      <h2 id="references">
+        {{ i18n "references" }}
+        {{ partial "content/heading-link.html" "references" }}
+      </h2>
+      <ul>
+        {{ range . }}
+          <li><a href="{{ .url }}">{{ .title }}</a></li>
+        {{ end }}
+      </ul>
+    </div>
+  </section>
+{{ end }}

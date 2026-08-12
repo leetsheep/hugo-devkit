@@ -104,14 +104,23 @@ do
   assert_file "$path"
 done
 
-for guide in content navigation output resources site-data templates
+for page in \
+  index.html \
+  guides/index.html \
+  guides/content/index.html \
+  guides/navigation/index.html \
+  guides/output/index.html \
+  guides/resources/index.html \
+  guides/site-data/index.html \
+  guides/templates/index.html \
+  posts/index.html
 do
-  assert_contains "guides/$guide/index.html" 'id=references'
+  assert_contains "$page" 'class=references'
+  assert_contains "$page" 'class=heading-link href=#references'
 done
 
 assert_contains index.html 'Feature guides'
 assert_contains index.html 'callout--note'
-assert_contains index.html 'id=references'
 assert_contains guides.json '"guides"'
 assert_contains guides.json '"version":"[0-9]'
 assert_contains guides/resources/index.html '\.webp'

@@ -7,6 +7,18 @@ aliases:
 tags:
   - content
   - structure
+params:
+  references:
+    - title: Content management
+      url: https://gohugo.io/content-management/
+    - title: Front matter
+      url: https://gohugo.io/content-management/front-matter/
+    - title: Page bundles
+      url: https://gohugo.io/content-management/page-bundles/
+    - title: Archetypes
+      url: https://gohugo.io/content-management/archetypes/
+    - title: Shortcodes
+      url: https://gohugo.io/content-management/shortcodes/
 ---
 
 Hugo reads content from `content/`. The folder path gives a page its section.
@@ -72,11 +84,3 @@ are drafts, have an empty tag list, and ask for a short summary.
 The callout on the home page comes from
 `themes/example/layouts/_shortcodes/callout.html`. A shortcode is useful when
 content authors need a stable component. Keep normal Markdown as the default.
-
-## References
-
-- [Content management](https://gohugo.io/content-management/)
-- [Front matter](https://gohugo.io/content-management/front-matter/)
-- [Page bundles](https://gohugo.io/content-management/page-bundles/)
-- [Archetypes](https://gohugo.io/content-management/archetypes/)
-- [Shortcodes](https://gohugo.io/content-management/shortcodes/)

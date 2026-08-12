@@ -3,6 +3,26 @@ title = 'Menus, taxonomies, and page collections'
 description = 'Help readers move through pages with Hugo collections and relationships.'
 weight = 50
 tags = ['navigation', 'content']
+
+[[params.references]]
+title = 'Menus'
+url = 'https://gohugo.io/content-management/menus/'
+
+[[params.references]]
+title = 'Taxonomies'
+url = 'https://gohugo.io/content-management/taxonomies/'
+
+[[params.references]]
+title = 'Pagination'
+url = 'https://gohugo.io/templates/pagination/'
+
+[[params.references]]
+title = 'Related content'
+url = 'https://gohugo.io/content-management/related/'
+
+[[params.references]]
+title = 'Page collections'
+url = 'https://gohugo.io/quick-reference/page-collections/'
 +++
 
 Navigation should follow the content model. Hugo already knows page parents,
@@ -52,11 +72,3 @@ page weight.
 The page template calls `site.RegularPages.Related .`. Rules in `hugo.toml` give
 tags most of the weight and dates a small weight. Related results are useful only
 when the source metadata is consistent.
-
-## References
-
-- [Menus](https://gohugo.io/content-management/menus/)
-- [Taxonomies](https://gohugo.io/content-management/taxonomies/)
-- [Pagination](https://gohugo.io/templates/pagination/)
-- [Related content](https://gohugo.io/content-management/related/)
-- [Page collections](https://gohugo.io/quick-reference/page-collections/)

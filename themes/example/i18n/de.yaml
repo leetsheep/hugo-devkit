@@ -9,6 +9,7 @@ minute_read:
   one: 1 Min. Lesezeit
   other: "{{ .Count }} Min. Lesezeit"
 related_pages: Ähnliche Seiten
+references: Quellen
 downloads: Downloads
 breadcrumbs: Brotkrümelnavigation
 main_navigation: Hauptnavigation

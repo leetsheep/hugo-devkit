@@ -5,6 +5,14 @@ title = 'Start with a small content model'
 description = 'Use sections and taxonomies only when readers need them.'
 tags = ['content', 'structure']
 categories = ['practice']
+
+[[params.references]]
+title = 'Content organization'
+url = 'https://gohugo.io/content-management/organization/'
+
+[[params.references]]
+title = 'Taxonomies'
+url = 'https://gohugo.io/content-management/taxonomies/'
 +++
 
 Hugo makes folders, sections, and taxonomies easy to add. That does not mean a
@@ -22,8 +30,3 @@ content/posts/example-post.md
 
 The parent `content/posts/_index.md` creates the section page. The `tags` and
 `categories` fields create taxonomy links and term pages.
-
-## References
-
-- [Content organization](https://gohugo.io/content-management/organization/)
-- [Taxonomies](https://gohugo.io/content-management/taxonomies/)

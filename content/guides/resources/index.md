@@ -11,6 +11,30 @@ tags = ['assets', 'templates']
 [[resources]]
   src = 'example-data.json'
   title = 'Example page data'
+
+[[params.references]]
+title = 'Asset management'
+url = 'https://gohugo.io/content-management/asset-management/'
+
+[[params.references]]
+title = 'Page resources'
+url = 'https://gohugo.io/content-management/page-resources/'
+
+[[params.references]]
+title = 'Image processing'
+url = 'https://gohugo.io/content-management/image-processing/'
+
+[[params.references]]
+title = 'Hugo Pipes'
+url = 'https://gohugo.io/hugo-pipes/introduction/'
+
+[[params.references]]
+title = 'JavaScript building'
+url = 'https://gohugo.io/functions/js/build/'
+
+[[params.references]]
+title = 'Sass building'
+url = 'https://gohugo.io/functions/css/sass/'
 +++
 
 Hugo resources are files that Hugo can inspect, transform, fingerprint, and
@@ -68,12 +92,3 @@ adds the site title and base path before Hugo publishes it.
 `themes/example/static/example.txt` is copied without a transform. Use `static/`
 for files that must keep their exact bytes and path. Prefer `assets/` when Hugo
 should process the file.
-
-## References
-
-- [Asset management](https://gohugo.io/content-management/asset-management/)
-- [Page resources](https://gohugo.io/content-management/page-resources/)
-- [Image processing](https://gohugo.io/content-management/image-processing/)
-- [Hugo Pipes](https://gohugo.io/hugo-pipes/introduction/)
-- [JavaScript building](https://gohugo.io/functions/js/build/)
-- [Sass building](https://gohugo.io/functions/css/sass/)

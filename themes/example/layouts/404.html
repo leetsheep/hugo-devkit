@@ -1,8 +1,10 @@
 {{ define "main" }}
-  <section class="content">
-    <p class="eyebrow">404</p>
-    <h1>{{ i18n "not_found" }}</h1>
-    <p>{{ i18n "not_found_help" }}</p>
-    <p><a href="{{ site.Home.RelPermalink }}">{{ i18n "return_home" }}</a></p>
-  </section>
+  <div class="site-container">
+    <section class="content">
+      <p class="eyebrow">404</p>
+      <h1>{{ i18n "not_found" }}</h1>
+      <p>{{ i18n "not_found_help" }}</p>
+      <p><a href="{{ site.Home.RelPermalink }}">{{ i18n "return_home" }}</a></p>
+    </section>
+  </div>
 {{ end }}

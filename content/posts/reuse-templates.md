@@ -8,6 +8,12 @@ tags:
   - structure
 categories:
   - practice
+params:
+  references:
+    - title: Partial templates
+      url: https://gohugo.io/templates/partials/
+    - title: Template introduction
+      url: https://gohugo.io/templates/introduction/
 ---
 
 A partial should have one clear job and a clear context. This makes it easy to
@@ -20,8 +26,3 @@ Each call passes one Page, so the partial does not need a custom dictionary.
 
 Use a dictionary when the partial needs several named values. Avoid passing a
 large context only because it is available.
-
-## References
-
-- [Partial templates](https://gohugo.io/templates/partials/)
-- [Template introduction](https://gohugo.io/templates/introduction/)

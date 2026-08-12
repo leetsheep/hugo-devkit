@@ -1,5 +1,5 @@
 {{ if not .IsHome }}
-  <nav class="breadcrumbs" aria-label="{{ i18n `breadcrumbs` }}">
+  <nav class="breadcrumbs site-container" aria-label="{{ i18n `breadcrumbs` }}">
     <ol>
       {{ range .Ancestors.Reverse }}
         <li><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></li>

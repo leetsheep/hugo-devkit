@@ -9,6 +9,7 @@ minute_read:
   one: 1 min read
   other: "{{ .Count }} min read"
 related_pages: Related pages
+references: References
 downloads: Downloads
 breadcrumbs: Breadcrumbs
 main_navigation: Main navigation

@@ -1,6 +1,18 @@
 +++
 title = 'Build with Hugo, one feature at a time'
 description = 'A small working site that explains the native Hugo code it uses.'
+
+[[params.references]]
+title = 'Hugo documentation'
+url = 'https://gohugo.io/documentation/'
+
+[[params.references]]
+title = 'Directory structure'
+url = 'https://gohugo.io/getting-started/directory-structure/'
+
+[[params.references]]
+title = 'Host and deploy'
+url = 'https://gohugo.io/host-and-deploy/'
 +++
 
 This site is both an example and a guide. Every page points to the theme or

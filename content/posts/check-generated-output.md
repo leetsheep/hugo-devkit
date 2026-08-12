@@ -5,6 +5,14 @@ date = '2026-08-05T09:00:00+02:00'
 draft = false
 tags = ['output', 'testing']
 categories = ['practice']
+
+[[params.references]]
+title = 'Hugo command'
+url = 'https://gohugo.io/commands/hugo/'
+
+[[params.references]]
+title = 'Build options'
+url = 'https://gohugo.io/getting-started/usage/'
 +++
 
 A production build should fail on template errors. Tests should also confirm
@@ -18,8 +26,3 @@ alias, processed image, fingerprinted assets, and static file.
 
 Keep checks about behavior, not minified whitespace. HTML formatting may change
 without changing the page.
-
-## References
-
-- [Hugo command](https://gohugo.io/commands/hugo/)
-- [Build options](https://gohugo.io/getting-started/usage/)

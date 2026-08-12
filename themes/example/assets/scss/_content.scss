@@ -59,6 +59,19 @@
   font-size: 1rem;
 }
 
+.references {
+  padding-block: 2rem;
+  background: var(--color-surface);
+}
+
+.references h2 {
+  margin-block-start: 0;
+}
+
+.references li + li {
+  margin-block-start: 0.35rem;
+}
+
 .callout > :first-child {
   margin-block-start: 0;
 }
@@ -71,7 +84,7 @@
 .downloads,
 .page-nav,
 .posts,
-.home-references {
+.references {
   margin-block-start: 3rem;
 }
 

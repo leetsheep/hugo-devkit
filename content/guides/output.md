@@ -3,6 +3,30 @@ title = 'Output formats and generated files'
 description = 'Publish HTML, feeds, data, redirects, search files, and error pages.'
 weight = 60
 tags = ['output', 'templates']
+
+[[params.references]]
+title = 'Output formats'
+url = 'https://gohugo.io/configuration/output-formats/'
+
+[[params.references]]
+title = 'RSS templates'
+url = 'https://gohugo.io/templates/rss/'
+
+[[params.references]]
+title = 'Sitemap templates'
+url = 'https://gohugo.io/templates/sitemap/'
+
+[[params.references]]
+title = 'Robots templates'
+url = 'https://gohugo.io/templates/robots/'
+
+[[params.references]]
+title = 'Aliases'
+url = 'https://gohugo.io/content-management/urls/#aliases'
+
+[[params.references]]
+title = '404 templates'
+url = 'https://gohugo.io/templates/404/'
 +++
 
 One Hugo page can produce more than HTML. Keep the default output when it works.
@@ -49,12 +73,3 @@ reader a route home. The hosting service must serve the generated `404.html`.
 Hugo excludes drafts, future pages, and expired pages in a normal production
 build. Use server flags to preview them. Keep those flags out of the production
 command.
-
-## References
-
-- [Output formats](https://gohugo.io/configuration/output-formats/)
-- [RSS templates](https://gohugo.io/templates/rss/)
-- [Sitemap templates](https://gohugo.io/templates/sitemap/)
-- [Robots templates](https://gohugo.io/templates/robots/)
-- [Aliases](https://gohugo.io/content-management/urls/#aliases)
-- [404 templates](https://gohugo.io/templates/404/)

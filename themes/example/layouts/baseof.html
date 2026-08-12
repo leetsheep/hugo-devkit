@@ -6,19 +6,26 @@
   <body data-copy-label="{{ i18n `copy_code` }}" data-copied-label="{{ i18n `code_copied` }}">
     <a class="skip-link" href="#main-content">{{ i18n "skip_to_content" }}</a>
     <header class="site-header">
-      <div class="header-inner">
-        <a class="site-title" href="{{ site.Home.RelPermalink }}">{{ site.Title }}</a>
-        {{ partial "navigation/menu.html" (dict "menuID" "main" "page" .) }}
+      <div class="site-container">
+        <div class="header-inner">
+          <a class="site-title" href="{{ site.Home.RelPermalink }}">{{ site.Title }}</a>
+          {{ partial "navigation/menu.html" (dict "menuID" "main" "page" .) }}
+        </div>
       </div>
     </header>
 
     <main class="site-main" id="main-content">
       {{ partial "navigation/breadcrumbs.html" . }}
       {{ block "main" . }}{{ end }}
+      {{ partial "content/references.html" . }}
     </main>
 
     <footer class="site-footer">
-      {{ partial "footer.html" . }}
+      <div class="site-container">
+        <div class="footer-inner">
+          {{ partial "footer.html" . }}
+        </div>
+      </div>
     </footer>
   </body>
 </html>

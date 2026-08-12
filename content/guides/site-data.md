@@ -3,6 +3,26 @@ title = 'Configuration, data, and languages'
 description = 'Keep site settings, reusable records, and interface messages out of page bodies.'
 weight = 40
 tags = ['data', 'configuration']
+
+[[params.references]]
+title = 'Configure Hugo'
+url = 'https://gohugo.io/configuration/'
+
+[[params.references]]
+title = 'Data sources'
+url = 'https://gohugo.io/content-management/data-sources/'
+
+[[params.references]]
+title = 'Multilingual sites'
+url = 'https://gohugo.io/content-management/multilingual/'
+
+[[params.references]]
+title = 'Internationalization'
+url = 'https://gohugo.io/functions/lang/translate/'
+
+[[params.references]]
+title = 'Security model'
+url = 'https://gohugo.io/about/security-model/'
 +++
 
 Content is for page text. Configuration, shared records, and interface messages
@@ -55,11 +75,3 @@ content. Hugo then builds one site per language and links translations.
 The asset partials use `hugo.IsDevelopment` to select source maps or production
 fingerprints. The footer reads build values allowed by `[security.funcs]`. Keep
 secrets out of templates and generated output.
-
-## References
-
-- [Configure Hugo](https://gohugo.io/configuration/)
-- [Data sources](https://gohugo.io/content-management/data-sources/)
-- [Multilingual sites](https://gohugo.io/content-management/multilingual/)
-- [Internationalization](https://gohugo.io/functions/lang/translate/)
-- [Security model](https://gohugo.io/about/security-model/)
