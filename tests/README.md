@@ -32,6 +32,10 @@ are written to `artifacts/hugo-compatibility` by default.
 
 ## Gate policy
 
+- The published example must contain its guides, paginated posts, taxonomy
+  pages, feed, sitemap, robots file, alias, JSON output, transformed page image,
+  fingerprinted theme assets, and copied static file.
+- Warnings in the published example fail the gate.
 - Hugo errors, missing output, failed assertions, and server startup failures
   fail the gate.
 - Hugo warnings are retained in the logs but remain non-fatal.
@@ -43,6 +47,10 @@ The test site composes `tests` with the existing `example` theme. This exercises
 the example theme's Dart Sass and JavaScript pipelines while the test theme adds
 deterministic fixtures for multilingual content, page kinds, data formats,
 taxonomies, page resources, output formats, and native template APIs.
+
+`scripts/test-example-site.sh` checks the public example. The compatibility
+fixture remains separate so its expected warning and error cases do not weaken
+the example checks.
 
 ## Extend coverage
 

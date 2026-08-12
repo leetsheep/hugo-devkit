@@ -1,6 +1,19 @@
 {{ define "main" }}
-  <article class="content">
-    <h1>{{ .Title }}</h1>
-    {{ .Content }}
-  </article>
+  <div class="site-container">
+    <article class="content h-entry">
+      <h1>{{ .Title }}</h1>
+      {{ partial "content/meta.html" . }}
+      {{ if and (.Param "toc") (in .TableOfContents "<nav") }}
+        <aside class="toc" aria-labelledby="toc-heading">
+          <h2 id="toc-heading">{{ i18n "on_this_page" }}</h2>
+          {{ .TableOfContents }}
+        </aside>
+      {{ end }}
+      {{ .Content }}
+      {{ partial "content/resources.html" . }}
+    </article>
+
+    {{ partial "content/related.html" . }}
+    {{ partial "navigation/page.html" . }}
+  </div>
 {{ end }}

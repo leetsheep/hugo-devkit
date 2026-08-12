@@ -1,0 +1,4 @@
+<h{{ .Level }} id="{{ .Anchor }}">
+  {{ .Text | safeHTML }}
+  {{ partial "content/heading-link.html" .Anchor }}
+</h{{ .Level }}>

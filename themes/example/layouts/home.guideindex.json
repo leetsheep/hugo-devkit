@@ -1,0 +1,10 @@
+{{- $guides := slice -}}
+{{- range where site.RegularPages.ByWeight "Section" "guides" -}}
+  {{- $guides = $guides | append (dict
+    "description" .Description
+    "permalink" .Permalink
+    "title" .Title
+    "weight" .Weight
+  ) -}}
+{{- end -}}
+{{- dict "guides" $guides "version" hugo.Version | jsonify -}}

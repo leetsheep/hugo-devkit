@@ -1,0 +1,26 @@
+{{ if hugo.IsMultilingual }}
+  {{ $page := . }}
+  <details class="language-switcher" data-language-switcher>
+    <summary class="language-switcher__toggle header-action" aria-label="{{ i18n `select_language` }}">
+      {{ with resources.Get "icons/globe.svg" }}{{ .Content | safeHTML }}{{ end }}
+      <span>{{ site.Language.Label }}</span>
+      {{ with resources.Get "icons/chevron-down.svg" }}{{ .Content | safeHTML }}{{ end }}
+    </summary>
+    <ul class="language-switcher__options">
+      {{ range hugo.Sites }}
+        {{ $targetSite := . }}
+        {{ $targetLanguage := .Language }}
+        {{ $targetPage := false }}
+        {{ range $page.AllTranslations }}
+          {{ if eq .Language.Name $targetLanguage.Name }}{{ $targetPage = . }}{{ end }}
+        {{ end }}
+        <li>
+          <a href="{{ if $targetPage }}{{ $targetPage.RelPermalink }}{{ else }}{{ $targetSite.Home.RelPermalink }}{{ end }}"
+            lang="{{ $targetLanguage.Locale }}" hreflang="{{ $targetLanguage.Locale }}"{{ if eq site.Language.Name $targetLanguage.Name }} aria-current="true"{{ end }}>
+            {{ $targetLanguage.Label }}
+          </a>
+        </li>
+      {{ end }}
+    </ul>
+  </details>
+{{ end }}

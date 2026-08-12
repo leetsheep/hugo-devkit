@@ -1,7 +1,20 @@
 {{ define "main" }}
-  <section class="intro">
-    <h1>{{ .Title }}</h1>
-    {{ .Content }}
+  <div class="site-container">
+    <section class="intro">
+      <h1>{{ .Title }}</h1>
+      {{ .Content }}
+    </section>
+  </div>
+
+  <section class="site-container" aria-labelledby="features-heading">
+    <h2 id="features-heading">{{ i18n "feature_guides" }}</h2>
+    <div class="card-grid">
+      {{ range hugo.Data.example_features }}
+        {{ with site.GetPage .pageRef }}
+          {{ partial "content/card.html" . }}
+        {{ end }}
+      {{ end }}
+    </div>
   </section>
 
   {{ partial "posts.html" . }}

@@ -1,0 +1,49 @@
+skip_to_content: Skip to content
+feature_guides: Guides
+on_this_page: On this page
+page_count:
+  one: 1 page
+  other: "{{ .Count }} pages"
+no_pages: No pages yet.
+minute_read:
+  one: 1 min read
+  other: "{{ .Count }} min read"
+related_pages: Related pages
+content_type_guide: Guide
+content_type_post: Post
+content_type_page: Page
+references: References
+downloads: Downloads
+breadcrumbs: Breadcrumbs
+main_navigation: Main navigation
+section_navigation: More in this section
+pagination_list_uses: The list template creates the pager with
+pagination_size_uses: Set the number of entries per page with
+pagination_in: in
+pagination_reference: Pagination
+link_to_heading: Link to this heading
+not_found: Page not found
+not_found_help: The link may be old, or the page may have moved.
+return_home: Return to the home page
+javascript_disabled: JavaScript disabled
+javascript_enabled: JavaScript enabled
+copy_code: Copy
+code_copied: Copied
+page_sources: Page sources
+page_support: Page details
+source_content: Content
+source_layouts: Layouts
+search: Search
+search_site: Search this site
+search_loading: Loading search index…
+search_error: Search is unavailable.
+search_empty: No pages found.
+search_result_one: "{count} page found."
+search_result_other: "{count} pages found."
+search_requires_javascript: Search requires JavaScript.
+select_language: Select language
+menu_guides: Guides
+menu_posts: Posts
+menu_tags: Tags
+menu_references: References
+menu_search: Search

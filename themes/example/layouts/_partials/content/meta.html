@@ -1,0 +1,9 @@
+{{ if or .Date .ReadingTime }}
+  <p class="content-meta">
+    {{ with .Date }}
+      <time class="dt-published" datetime="{{ .Format `2006-01-02` }}">{{ . | time.Format (or site.Params.dateFormat ":date_long") }}</time>
+    {{ end }}
+    {{ if and .Date .ReadingTime }}<span aria-hidden="true">·</span>{{ end }}
+    {{ with .ReadingTime }}<span>{{ i18n "minute_read" . }}</span>{{ end }}
+  </p>
+{{ end }}
