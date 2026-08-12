@@ -14,13 +14,13 @@
       </div>
     </header>
 
-    <main class="site-main" id="main-content">
+    <main class="site-main{{ with .Params.references }} site-main--has-references{{ end }}" id="main-content">
       {{ partial "navigation/breadcrumbs.html" . }}
       {{ block "main" . }}{{ end }}
       {{ partial "content/references.html" . }}
     </main>
 
-    <footer class="site-footer">
+    <footer class="site-footer{{ with .Params.references }} site-footer--after-references{{ end }}">
       <div class="site-container">
         <div class="footer-inner">
           {{ partial "footer.html" . }}

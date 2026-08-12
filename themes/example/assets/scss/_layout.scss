@@ -58,6 +58,10 @@
   padding-block: 3rem;
 }
 
+.site-main--has-references {
+  padding-block-end: 0;
+}
+
 .site-footer {
   color: var(--color-muted);
 }
@@ -65,6 +69,10 @@
 .footer-inner {
   padding-block: 1.5rem;
   border-top: 1px solid var(--color-line);
+}
+
+.site-footer--after-references .footer-inner {
+  border-top: 0;
 }
 
 .breadcrumbs {
@@ -98,5 +106,9 @@
 
   .site-main {
     padding-block: 2rem;
+  }
+
+  .site-main--has-references {
+    padding-block-end: 0;
   }
 }
