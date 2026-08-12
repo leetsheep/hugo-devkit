@@ -1,5 +1,5 @@
 +++
-title = 'Hugo feature guides'
+title = 'Guides'
 description = 'Working examples for the main native Hugo systems.'
 weight = 10
 

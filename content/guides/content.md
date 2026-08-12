@@ -81,6 +81,11 @@ are drafts, have an empty tag list, and ask for a short summary.
 
 ## Shortcodes
 
-The callout on the home page comes from
+The callout below comes from
 `themes/example/layouts/_shortcodes/callout.html`. A shortcode is useful when
 content authors need a stable component. Keep normal Markdown as the default.
+
+{{< callout title="Use shortcodes with care" >}}
+Use a shortcode for reusable markup, not for content that normal Markdown can
+express clearly.
+{{< /callout >}}

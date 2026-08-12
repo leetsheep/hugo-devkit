@@ -2,7 +2,7 @@
   <nav class="breadcrumbs site-container" aria-label="{{ i18n `breadcrumbs` }}">
     <ol>
       {{ range .Ancestors.Reverse }}
-        <li><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></li>
+        <li><a href="{{ .RelPermalink }}">{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .LinkTitle }}{{ end }}</a></li>
       {{ end }}
       <li aria-current="page">{{ .LinkTitle }}</li>
     </ol>

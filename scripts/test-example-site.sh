@@ -119,8 +119,9 @@ do
   assert_contains "$page" 'class=heading-link href=#references'
 done
 
-assert_contains index.html 'Feature guides'
-assert_contains index.html 'callout--note'
+assert_contains index.html 'Build with Hugo\.'
+assert_contains index.html '>Guides<'
+assert_contains guides/content/index.html 'callout--note'
 assert_contains guides.json '"guides"'
 assert_contains guides.json '"version":"[0-9]'
 assert_contains guides/resources/index.html '\.webp'
@@ -131,6 +132,7 @@ assert_contains guides/templates/index.html 'id=copy-button-template'
 assert_contains guides/templates/index.html 'class="?copy-icon"?'
 assert_contains guides/templates/index.html 'class="?check-icon"?'
 assert_contains posts/index.html 'posts/page/2/'
+assert_contains posts/page/2/index.html '>Hugo Devkit<'
 assert_contains posts/check-generated-output/index.html 'class=content-type>Post'
 if [ "$(grep -o 'class=card' "$OUTPUT_ROOT/posts/index.html" | wc -l | tr -d ' ')" -ne 4 ]; then
   printf 'error: first posts page does not contain four items\n' >&2
