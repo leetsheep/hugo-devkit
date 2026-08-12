@@ -1,7 +1,99 @@
 baseURL = 'https://example.org/'
-locale = 'en-us'
+copyright = 'Example code is available under the repository license.'
+defaultContentLanguage = 'en'
+enableRobotsTXT = true
+pagination.pagerSize = 4
+summaryLength = 24
 theme = ['example']
+timeZone = 'Europe/Berlin'
 title = 'hugo-devkit'
 
+[build]
+  noJSConfigInAssets = true
+
 [params]
-  description = 'A batteries-included Hugo starter kit for local development and deployment.'
+  dateFormat = ':date_long'
+  description = 'Small, working examples of native Hugo features and good defaults.'
+
+[languages]
+  [languages.en]
+    label = 'English'
+    locale = 'en-US'
+    weight = 1
+
+  [languages.de]
+    label = 'Deutsch'
+    locale = 'de-DE'
+    weight = 2
+
+[taxonomies]
+  category = 'categories'
+  tag = 'tags'
+
+[outputs]
+  home = ['html', 'rss', 'guideIndex', 'searchIndex']
+  section = ['html', 'rss']
+  taxonomy = ['html', 'rss']
+  term = ['html', 'rss']
+
+[outputFormats.guideIndex]
+  baseName = 'guides'
+  isPlainText = true
+  mediaType = 'application/json'
+  notAlternative = true
+
+[outputFormats.searchIndex]
+  baseName = 'search-index'
+  isPlainText = true
+  mediaType = 'application/json'
+  notAlternative = true
+
+[related]
+  includeNewer = true
+  threshold = 60
+  toLower = true
+
+  [[related.indices]]
+    name = 'tags'
+    type = 'basic'
+    weight = 100
+
+  [[related.indices]]
+    name = 'date'
+    type = 'basic'
+    weight = 10
+
+[menus]
+  [[menus.main]]
+    identifier = 'guides'
+    name = 'Guides'
+    pageRef = '/guides'
+    weight = 10
+
+  [[menus.main]]
+    identifier = 'posts'
+    name = 'Posts'
+    pageRef = '/posts'
+    weight = 20
+
+  [[menus.main]]
+    identifier = 'tags'
+    name = 'Tags'
+    pageRef = '/tags'
+    weight = 30
+
+  [[menus.main]]
+    identifier = 'references'
+    name = 'References'
+    pageRef = '/references'
+    weight = 40
+
+  [[menus.main]]
+    identifier = 'search'
+    name = 'Search'
+    pageRef = '/search'
+    weight = 50
+
+[security]
+  [security.funcs]
+    getenv = ['^HUGO_']

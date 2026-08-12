@@ -1,0 +1,7 @@
+{{- $type := "page" -}}
+{{- if eq .Type "guides" -}}
+  {{- $type = "guide" -}}
+{{- else if eq .Type "posts" -}}
+  {{- $type = "post" -}}
+{{- end -}}
+{{- i18n (printf "content_type_%s" $type) -}}

@@ -1,12 +1,19 @@
 {{ define "main" }}
-  <section class="content">
-    <h1>{{ .Title }}</h1>
+  <section class="listing site-container">
+    <header class="listing-header">
+      <h1>{{ .Title }}</h1>
+      {{ .Content }}
+    </header>
 
-    {{ range .Pages }}
-      <article>
-        <h2><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h2>
-        {{ with .Summary }}{{ . }}{{ end }}
-      </article>
-    {{ end }}
+    <div class="page-list">
+      {{ range .Data.Terms.Alphabetical }}
+        <article class="card">
+          <h2><a href="{{ .Page.RelPermalink }}">{{ .Page.LinkTitle }}</a></h2>
+          <p>{{ i18n "page_count" .Count }}</p>
+        </article>
+      {{ else }}
+        <p>{{ i18n "no_pages" }}</p>
+      {{ end }}
+    </div>
   </section>
 {{ end }}

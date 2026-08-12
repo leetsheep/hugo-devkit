@@ -1,0 +1,13 @@
+{{- $pages := slice -}}
+{{- range site.RegularPages -}}
+  {{- if not .Params.searchExclude -}}
+    {{- $pages = $pages | append (dict
+      "content" .Plain
+      "description" .Description
+      "permalink" .RelPermalink
+      "section" .Section
+      "title" .Title
+    ) -}}
+  {{- end -}}
+{{- end -}}
+{{- $pages | jsonify -}}

@@ -2,36 +2,24 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ site.Params.description }}{{ end }}">
 <title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Title }} | {{ site.Title }}{{ end }}</title>
-{{ with resources.Get "scss/main.scss" }}
-  {{ $opts := dict
-    "enableSourceMap" hugo.IsDevelopment
-    "outputStyle" (cond hugo.IsDevelopment "expanded" "compressed")
-    "targetPath" "css/main.css"
-    "transpiler" "dartsass"
-  }}
-  {{ with . | css.Sass $opts }}
-    {{ if hugo.IsDevelopment }}
-      <link rel="stylesheet" href="{{ .RelPermalink }}">
-    {{ else }}
-      {{ with . | fingerprint }}
-        <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous">
-      {{ end }}
-    {{ end }}
+<link rel="canonical" href="{{ .Permalink }}">
+{{ range .AllTranslations }}
+  <link rel="alternate" hreflang="{{ .Language.Locale }}" href="{{ .Permalink }}">
+{{ end }}
+{{ with .OutputFormats.Get "rss" }}
+  <link rel="alternate" type="{{ .MediaType.Type }}" href="{{ .RelPermalink }}" title="{{ site.Title }}">
+{{ end }}
+{{ with resources.Get "site.webmanifest" }}
+  {{ with resources.ExecuteAsTemplate "site.webmanifest" $ . }}
+    <link rel="manifest" href="{{ .RelPermalink }}">
   {{ end }}
 {{ end }}
-{{ with resources.Get "js/main.js" }}
-  {{ $opts := dict
-    "minify" (cond hugo.IsDevelopment false true)
-    "sourceMap" (cond hugo.IsDevelopment "linked" "none")
-    "targetPath" "js/main.js"
-  }}
-  {{ with . | js.Build $opts }}
-    {{ if hugo.IsDevelopment }}
-      <script defer src="{{ .RelPermalink }}"></script>
-    {{ else }}
-      {{ with . | fingerprint }}
-        <script defer src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous"></script>
-      {{ end }}
-    {{ end }}
-  {{ end }}
+{{ partial "opengraph.html" . }}
+{{ partial "schema.html" . }}
+{{ if hugo.IsDevelopment }}
+  {{ partial "assets/css.html" . }}
+  {{ partial "assets/js.html" . }}
+{{ else }}
+  {{ partialCached "assets/css.html" . }}
+  {{ partialCached "assets/js.html" . }}
 {{ end }}

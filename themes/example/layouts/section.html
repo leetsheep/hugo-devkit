@@ -1,13 +1,17 @@
 {{ define "main" }}
-  <section class="content">
-    <h1>{{ .Title }}</h1>
-    {{ .Content }}
+  <section class="listing site-container">
+    <header class="listing-header">
+      <h1>{{ .Title }}</h1>
+      {{ .Content }}
+      {{ partial "content/pagination-note.html" . }}
+    </header>
 
-    {{ range .Pages }}
-      <article>
-        <h2><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h2>
-        {{ with .Summary }}{{ . }}{{ end }}
-      </article>
-    {{ end }}
+    {{ $paginator := .Paginate .RegularPages.ByWeight }}
+    <div class="page-list">
+      {{ range $paginator.Pages }}
+        {{ partial "content/card.html" . }}
+      {{ end }}
+    </div>
+    {{ partial "pagination.html" . }}
   </section>
 {{ end }}

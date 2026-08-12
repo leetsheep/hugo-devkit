@@ -1,0 +1,48 @@
+{{ $layoutByKind := dict
+  "404" "themes/example/layouts/404.html"
+  "home" "themes/example/layouts/home.html"
+  "page" "themes/example/layouts/page.html"
+  "section" "themes/example/layouts/section.html"
+  "taxonomy" "themes/example/layouts/taxonomy.html"
+  "term" "themes/example/layouts/term.html"
+}}
+{{ $layout := or (index $layoutByKind .Kind) (printf "themes/example/layouts/%s.html" .Kind) }}
+{{ with .Layout }}{{ $layout = printf "themes/example/layouts/%s.html" . }}{{ end }}
+{{ $contentSources := slice }}
+{{ with .File }}
+  {{ $contentSources = $contentSources | append (printf "content/%s" .Path) }}
+{{ else }}
+  {{ if in (slice "taxonomy" "term") $.Kind }}
+    {{ $contentSources = $contentSources | append "hugo.toml" "content/** (front matter)" }}
+  {{ else if eq $.Kind "404" }}
+    {{ $contentSources = $contentSources | append (printf "themes/example/i18n/%s.yaml" site.Language.Lang) }}
+  {{ else }}
+    {{ $contentSources = $contentSources | append "Hugo generated page" }}
+  {{ end }}
+{{ end }}
+
+<section class="page-sources site-container" aria-labelledby="page-sources">
+  <h2 id="page-sources">
+    {{ i18n "page_sources" }}
+    {{ partial "content/heading-link.html" "page-sources" }}
+  </h2>
+  <dl>
+    <div>
+      <dt>{{ i18n "source_content" }}</dt>
+      <dd>
+        {{ range $index, $source := $contentSources }}
+          {{ if $index }}<span aria-hidden="true">+</span>{{ end }}
+          <code>{{ $source }}</code>
+        {{ end }}
+      </dd>
+    </div>
+    <div>
+      <dt>{{ i18n "source_layouts" }}</dt>
+      <dd>
+        <code>{{ $layout }}</code>
+        <span aria-hidden="true">+</span>
+        <code>themes/example/layouts/baseof.html</code>
+      </dd>
+    </div>
+  </dl>
+</section>

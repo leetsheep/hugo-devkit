@@ -1,0 +1,49 @@
+skip_to_content: Zum Inhalt
+feature_guides: Anleitungen
+on_this_page: Auf dieser Seite
+page_count:
+  one: 1 Seite
+  other: "{{ .Count }} Seiten"
+no_pages: Noch keine Seiten.
+minute_read:
+  one: 1 Min. Lesezeit
+  other: "{{ .Count }} Min. Lesezeit"
+related_pages: Ähnliche Seiten
+content_type_guide: Anleitung
+content_type_post: Beitrag
+content_type_page: Seite
+references: Quellen
+downloads: Downloads
+breadcrumbs: Brotkrümelnavigation
+main_navigation: Hauptnavigation
+section_navigation: Mehr in diesem Bereich
+pagination_list_uses: Das Listentemplate erzeugt den Pager mit
+pagination_size_uses: Die Zahl der Einträge pro Seite wird festgelegt mit
+pagination_in: in
+pagination_reference: Seitennummerierung
+link_to_heading: Link zu dieser Überschrift
+not_found: Seite nicht gefunden
+not_found_help: Der Link ist vielleicht alt oder die Seite wurde verschoben.
+return_home: Zur Startseite
+javascript_disabled: JavaScript inaktiv
+javascript_enabled: JavaScript aktiv
+copy_code: Kopieren
+code_copied: Kopiert
+page_sources: Seitenquellen
+page_support: Seitendetails
+source_content: Inhalt
+source_layouts: Layouts
+search: Suche
+search_site: Diese Website durchsuchen
+search_loading: Suchindex wird geladen…
+search_error: Die Suche ist nicht verfügbar.
+search_empty: Keine Seiten gefunden.
+search_result_one: "{count} Seite gefunden."
+search_result_other: "{count} Seiten gefunden."
+search_requires_javascript: Die Suche benötigt JavaScript.
+select_language: Sprache auswählen
+menu_guides: Anleitungen
+menu_posts: Beiträge
+menu_tags: Tags
+menu_references: Referenzen
+menu_search: Suche

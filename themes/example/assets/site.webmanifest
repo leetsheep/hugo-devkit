@@ -1,0 +1,8 @@
+{
+  "name": {{ site.Title | jsonify }},
+  "short_name": {{ site.Title | jsonify }},
+  "start_url": {{ site.Home.RelPermalink | jsonify }},
+  "display": "minimal-ui",
+  "background_color": "#f7f7f4",
+  "theme_color": "#075e54"
+}

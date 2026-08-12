@@ -1,15 +1,9 @@
-const jsStatus = document.querySelector("[data-js-status]");
+import { enableCodeCopy } from "./features/code-copy.js";
+import { enableLanguageSwitcher } from "./features/language-switcher.js";
+import { showJavaScriptStatus } from "./features/js-status.js";
+import { enableSearch } from "./features/search.js";
 
-if (jsStatus) {
-  const label = jsStatus.querySelector("[data-js-status-label]");
-  const enabledIcon = jsStatus.querySelector("[data-js-status-enabled-icon]");
-  const disabledIcon = jsStatus.querySelector("[data-js-status-disabled-icon]");
-
-  if (label && enabledIcon && disabledIcon) {
-    document.documentElement.classList.add("js-enabled");
-    jsStatus.dataset.state = "enabled";
-    label.textContent = "JavaScript enabled";
-    enabledIcon.hidden = false;
-    disabledIcon.hidden = true;
-  }
-}
+showJavaScriptStatus();
+enableCodeCopy();
+enableLanguageSwitcher();
+enableSearch();

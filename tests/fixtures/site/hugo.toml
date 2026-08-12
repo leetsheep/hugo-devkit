@@ -9,6 +9,9 @@ themesDir = '../../../themes'
 timeZone = 'Europe/Berlin'
 title = 'Hugo compatibility suite'
 
+[build]
+  noJSConfigInAssets = true
+
 [params]
   description = 'Deterministic fixtures for Hugo version compatibility checks.'
   compatibilityMode = 'build'

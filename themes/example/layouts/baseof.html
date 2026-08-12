@@ -3,17 +3,43 @@
   <head>
     {{ partial "head.html" . }}
   </head>
-  <body>
+  {{ $hasPageSources := true }}
+  {{ $hasReferences := in (slice "section" "term") .Kind }}
+  {{ with .Params.references }}{{ $hasReferences = true }}{{ end }}
+  {{ $hasSupport := or $hasPageSources $hasReferences }}
+  <body data-copy-label="{{ i18n `copy_code` }}" data-copied-label="{{ i18n `code_copied` }}">
+    <a class="skip-link" href="#main-content">{{ i18n "skip_to_content" }}</a>
     <header class="site-header">
-      <a class="site-title" href="{{ site.Home.RelPermalink }}">{{ site.Title }}</a>
+      <div class="site-container">
+        <div class="header-inner">
+          <a class="site-title" href="{{ site.Home.RelPermalink }}">{{ site.Title }}</a>
+          <div class="header-actions">
+            {{ partial "navigation/menu.html" (dict "menuID" "main" "page" .) }}
+            {{ partial "navigation/language-switcher.html" . }}
+          </div>
+        </div>
+      </div>
     </header>
 
-    <main class="site-main">
+    <main class="site-main{{ if $hasSupport }} site-main--has-support{{ end }}" id="main-content">
+      {{ partial "navigation/breadcrumbs.html" . }}
       {{ block "main" . }}{{ end }}
     </main>
 
-    <footer class="site-footer">
-      {{ partial "footer.html" . }}
+    {{ if $hasSupport }}
+      <aside class="page-support" aria-label="{{ i18n `page_support` }}">
+        {{ if $hasPageSources }}{{ partial "content/page-sources.html" . }}{{ end }}
+        {{ if $hasReferences }}{{ partial "content/references.html" . }}{{ end }}
+      </aside>
+    {{ end }}
+
+    <footer class="site-footer{{ if $hasSupport }} site-footer--after-support{{ end }}">
+      <div class="site-container">
+        <div class="footer-inner">
+          {{ partial "footer.html" . }}
+        </div>
+      </div>
     </footer>
+    {{ partialCached "components/code-copy.html" . }}
   </body>
 </html>

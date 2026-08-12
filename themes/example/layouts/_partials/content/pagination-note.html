@@ -1,0 +1,9 @@
+{{ $paginateCall := ".Paginate .RegularPages.ByWeight" }}
+{{ if eq .Kind "term" }}
+  {{ $paginateCall = ".Paginate .RegularPages.ByDate.Reverse" }}
+{{ end }}
+<p class="pagination-note">
+  {{ i18n "pagination_list_uses" }} <code>{{ $paginateCall }}</code>.
+  {{ i18n "pagination_size_uses" }} <code>pagination.pagerSize</code>
+  {{ i18n "pagination_in" }} <code>hugo.toml</code>.
+</p>

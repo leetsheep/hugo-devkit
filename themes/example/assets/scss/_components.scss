@@ -1,0 +1,136 @@
+.highlight {
+  position: relative;
+  margin-block: 1.5rem;
+}
+
+.highlight pre,
+.content > pre {
+  overflow-x: auto;
+  padding: 0.9rem;
+  background: var(--color-code);
+  font-size: 0.9rem;
+  border-radius: 0.35rem;
+}
+
+.copy-button {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.3rem 0.5rem;
+  border: 1px solid var(--color-line);
+  border-radius: 0.25rem;
+  color: var(--color-fg);
+  background: var(--color-surface);
+  font: inherit;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.copy-button,
+.copy-button * {
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.copy-button__copy-icon,
+.copy-button__check-icon {
+  display: inline-flex;
+  flex: 0 0 auto;
+}
+
+.copy-button__copy-icon[hidden],
+.copy-button__check-icon[hidden] {
+  display: none;
+}
+
+.copy-icon,
+.check-icon {
+  width: 1em;
+  height: 1em;
+}
+
+figure {
+  margin: 2rem 0;
+}
+
+figure img {
+  display: block;
+  border-radius: 0.35rem;
+}
+
+figcaption {
+  margin-block-start: 0.5rem;
+  color: var(--color-muted);
+  font-size: 0.9rem;
+}
+
+.external-link-text {
+  text-decoration: underline;
+}
+
+a[rel~="external"] {
+  text-decoration: none;
+}
+
+a[rel~="external"]:hover .external-link-text {
+  text-decoration-thickness: 0.14em;
+}
+
+.external-link-icon {
+  display: inline-block;
+  width: 1.1em;
+  height: 1.1em;
+  overflow: visible;
+  vertical-align: -0.2em;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .external-link-icon__arrow {
+    transition: transform 150ms ease-out;
+  }
+
+  a[rel~="external"]:is(:hover, :focus-visible) .external-link-icon__arrow {
+    transform: translate(1px, -1px);
+  }
+}
+
+.site-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+}
+
+.site-meta code {
+  color: var(--color-fg);
+  font-family: var(--font-mono);
+}
+
+.js-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.js-status__icon {
+  display: inline-flex;
+  width: 1rem;
+  height: 1rem;
+  color: var(--color-danger);
+}
+
+.js-status__icon[hidden] {
+  display: none;
+}
+
+.js-status[data-state="enabled"] .js-status__icon {
+  color: var(--color-success);
+}
+
+.js-status__icon svg {
+  width: 100%;
+  height: 100%;
+  stroke: currentColor;
+}
