@@ -126,6 +126,7 @@ assert_contains guides.json '"version":"[0-9]'
 assert_contains guides/resources/index.html '\.webp'
 assert_contains guides/resources/index.html 'example-data\.json'
 assert_contains posts/index.html 'posts/page/2/'
+assert_contains posts/check-generated-output/index.html 'class=content-type>Post'
 if [ "$(grep -o 'class=card' "$OUTPUT_ROOT/posts/index.html" | wc -l | tr -d ' ')" -ne 4 ]; then
   printf 'error: first posts page does not contain four items\n' >&2
   exit 1

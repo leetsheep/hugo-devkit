@@ -88,6 +88,28 @@
   margin-block-start: 3rem;
 }
 
+.related-list {
+  display: grid;
+  gap: 0.65rem;
+  padding: 0;
+  list-style: none;
+}
+
+.related-list li {
+  display: flex;
+  align-items: baseline;
+  gap: 0.65rem;
+}
+
+.content-type {
+  padding: 0.1rem 0.4rem;
+  color: var(--color-muted);
+  font-size: 0.75rem;
+  line-height: 1.4;
+  border: 1px solid var(--color-line);
+  border-radius: 0.25rem;
+}
+
 .page-nav {
   display: flex;
   justify-content: space-between;

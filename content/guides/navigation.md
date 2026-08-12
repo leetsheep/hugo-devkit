@@ -71,4 +71,6 @@ page weight.
 
 The page template calls `site.RegularPages.Related .`. Rules in `hugo.toml` give
 tags most of the weight and dates a small weight. Related results are useful only
-when the source metadata is consistent.
+when the source metadata is consistent. The related partial adds a visible page
+type to each link. `content/type-label.html` maps Hugo's content types to short,
+translated labels and uses `Page` as a safe default.

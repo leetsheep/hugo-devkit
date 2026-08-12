@@ -9,6 +9,9 @@ minute_read:
   one: 1 min read
   other: "{{ .Count }} min read"
 related_pages: Related pages
+content_type_guide: Guide
+content_type_post: Post
+content_type_page: Page
 references: References
 downloads: Downloads
 breadcrumbs: Breadcrumbs
