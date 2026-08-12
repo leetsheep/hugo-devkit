@@ -1,6 +1,6 @@
 +++
 title = 'Mit Hugo bauen.'
-description = 'Eine kleine Beispielseite, die den verwendeten nativen Hugo-Code erklärt.'
+description = 'Ein funktionierendes Theme für native Hugo-Funktionen und eine klare Projektstruktur.'
 
 [[params.references]]
 title = 'Hugo-Dokumentation'
@@ -11,8 +11,16 @@ title = 'Verzeichnisstruktur'
 url = 'https://gohugo.io/getting-started/directory-structure/'
 +++
 
-Diese Website ist Beispiel und Anleitung zugleich. Jede Seite nennt die Theme-
-und Projektdateien, die ihre Funktionen erzeugen.
+Hugo ist ein Generator für schnelle, optimierte statische Websites. Aus
+Markdown, Templates und Assets entstehen fertige Dateien für den Webserver. Es
+gibt keine Datenbank und keine Anwendung, die im Betrieb laufen muss. Dadurch
+bleiben das Deployment einfach, der Footprint klein und die Angriffsfläche
+gering.
 
-Die deutsche Version übersetzt nur einige Seiten. So zeigt das Beispiel auch,
-wie ein Sprachmenü bei fehlenden Übersetzungen auf die Startseite zurückfällt.
+Dieses Beispiel-Theme zeigt, wie Hugos native Funktionen ohne CSS- oder
+JavaScript-Framework zusammenspielen. Jede Seite erklärt ihre Funktion und
+nennt die Content-, Template-, Sass- oder JavaScript-Dateien dahinter.
+
+Beginne mit den Anleitungen und öffne danach die genannten Dateien. Die Beiträge
+zeigen kleinere Beispiele. Du kannst alle Templates, Module und Content-Muster
+gerne für dein eigenes Hugo-Projekt übernehmen.

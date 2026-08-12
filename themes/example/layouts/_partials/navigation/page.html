@@ -1,4 +1,4 @@
-{{ if or .NextInSection .PrevInSection }}
+{{ if and (in (slice "guides" "posts") .Section) (or .NextInSection .PrevInSection) }}
   <nav class="page-nav" aria-label="{{ i18n `section_navigation` }}">
     {{ with .NextInSection }}<a rel="next" href="{{ .RelPermalink }}">← {{ .LinkTitle }}</a>{{ end }}
     {{ with .PrevInSection }}<a rel="prev" href="{{ .RelPermalink }}">{{ .LinkTitle }} →</a>{{ end }}

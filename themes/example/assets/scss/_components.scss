@@ -26,8 +26,13 @@
   background: var(--color-surface);
   font: inherit;
   font-size: 0.9rem;
-  user-select: none;
   cursor: pointer;
+}
+
+.copy-button,
+.copy-button * {
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 .copy-button__copy-icon,

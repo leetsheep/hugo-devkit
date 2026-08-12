@@ -45,9 +45,9 @@ than a hand-written URL because Hugo resolves the final permalink.
 
 ## Breadcrumbs and section links
 
-The breadcrumb partial uses `.Ancestors.Reverse`. The page navigation uses
-`.NextInSection` and `.PrevInSection`. These methods use the page tree instead of
-repeating paths in front matter.
+The breadcrumb partial uses `.Ancestors.Reverse`. Guide and post pages use
+`.NextInSection` and `.PrevInSection` for the previous and next entry. Other
+pages omit this navigation because their order is not a reading sequence.
 
 ## Taxonomies
 

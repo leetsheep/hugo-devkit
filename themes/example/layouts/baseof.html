@@ -4,7 +4,7 @@
     {{ partial "head.html" . }}
   </head>
   {{ $hasPageSources := true }}
-  {{ $hasReferences := false }}
+  {{ $hasReferences := in (slice "section" "term") .Kind }}
   {{ with .Params.references }}{{ $hasReferences = true }}{{ end }}
   {{ $hasSupport := or $hasPageSources $hasReferences }}
   <body data-copy-label="{{ i18n `copy_code` }}" data-copied-label="{{ i18n `code_copied` }}">

@@ -17,6 +17,10 @@ downloads: Downloads
 breadcrumbs: Breadcrumbs
 main_navigation: Main navigation
 section_navigation: More in this section
+pagination_list_uses: The list template creates the pager with
+pagination_size_uses: Set the number of entries per page with
+pagination_in: in
+pagination_reference: Pagination
 link_to_heading: Link to this heading
 not_found: Page not found
 not_found_help: The link may be old, or the page may have moved.

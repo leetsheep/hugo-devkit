@@ -1,6 +1,6 @@
 +++
 title = 'Build with Hugo.'
-description = 'A small working site that explains the native Hugo code it uses.'
+description = 'A working theme that explains native Hugo features and good project structure.'
 
 [[params.references]]
 title = 'Hugo documentation'
@@ -15,10 +15,15 @@ title = 'Host and deploy'
 url = 'https://gohugo.io/host-and-deploy/'
 +++
 
-This site is both an example and a guide. Every page points to the theme or
-project file that makes the feature work. The theme uses Hugo itself: no CSS
-framework, JavaScript framework, remote asset, or build plugin.
+Hugo is a static site generator for fast, optimized websites. It turns
+Markdown, templates, and assets into files that are ready to serve. There is no
+database or application runtime to keep running. This keeps deployment simple,
+the runtime footprint small, and the attack surface limited.
 
-Start with a guide, then inspect the named file. Keep project content and
-configuration in the project. Keep reusable templates, assets, data, messages,
-and archetypes in the theme.
+This example theme shows how Hugo's native features work together without a CSS
+or JavaScript framework. Every page explains the feature it demonstrates and
+points to the content, template, Sass, or JavaScript file behind it.
+
+Start with the Guides, then open the named files. The Posts provide smaller
+working examples. Feel free to reuse any template, module, or content pattern
+in your own Hugo project.

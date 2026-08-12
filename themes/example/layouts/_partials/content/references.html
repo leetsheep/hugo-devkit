@@ -1,4 +1,15 @@
-{{ with .Params.references }}
+{{ $references := .Params.references | default (slice) }}
+{{ if in (slice "section" "term") .Kind }}
+  {{ $paginationURL := "https://gohugo.io/templates/pagination/" }}
+  {{ $hasPaginationReference := false }}
+  {{ range $references }}
+    {{ if eq .url $paginationURL }}{{ $hasPaginationReference = true }}{{ end }}
+  {{ end }}
+  {{ if not $hasPaginationReference }}
+    {{ $references = $references | append (dict "title" (i18n "pagination_reference") "url" $paginationURL) }}
+  {{ end }}
+{{ end }}
+{{ with $references }}
   <section class="references" aria-labelledby="references">
     <div class="site-container">
       <h2 id="references">

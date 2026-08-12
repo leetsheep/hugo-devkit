@@ -13,8 +13,8 @@ tags = ['assets', 'templates']
   title = 'Example page data'
 
 [[params.references]]
-title = 'Asset management'
-url = 'https://gohugo.io/content-management/asset-management/'
+title = 'Resource functions'
+url = 'https://gohugo.io/functions/resources/'
 
 [[params.references]]
 title = 'Page resources'

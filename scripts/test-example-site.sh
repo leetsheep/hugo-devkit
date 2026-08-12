@@ -70,12 +70,41 @@ assert_contains() {
   fi
 }
 
+assert_not_contains() {
+  file=$1
+  pattern=$2
+
+  if grep -E "$pattern" "$OUTPUT_ROOT/$file" >/dev/null 2>&1; then
+    printf 'error: %s contains unexpected %s\n' "$OUTPUT_ROOT/$file" "$pattern" >&2
+    exit 1
+  fi
+}
+
 assert_generated_asset() {
   directory=$1
   pattern=$2
 
   if ! find "$OUTPUT_ROOT/$directory" -maxdepth 1 -type f -name "$pattern" -size +0c | grep . >/dev/null 2>&1; then
     printf 'error: expected generated asset %s/%s\n' "$OUTPUT_ROOT/$directory" "$pattern" >&2
+    exit 1
+  fi
+}
+
+assert_generated_asset_contains() {
+  directory=$1
+  pattern=$2
+  expected=$3
+  minimum=${4:-1}
+  asset=$(find "$OUTPUT_ROOT/$directory" -maxdepth 1 -type f -name "$pattern" -size +0c | head -n 1)
+  count=0
+
+  if [ -n "$asset" ]; then
+    count=$(grep -o -F -- "$expected" "$asset" | wc -l | tr -d ' ')
+  fi
+
+  if [ "$count" -lt "$minimum" ]; then
+    printf 'error: generated asset %s/%s contains %s only %s time(s), expected at least %s\n' \
+      "$directory" "$pattern" "$expected" "$count" "$minimum" >&2
     exit 1
   fi
 }
@@ -156,8 +185,20 @@ if grep -F '"title":"Search"' "$OUTPUT_ROOT/search-index.json" >/dev/null 2>&1; 
   exit 1
 fi
 assert_contains posts/index.html 'posts/page/2/'
-assert_contains posts/page/2/index.html '>Hugo Devkit<'
+assert_contains posts/index.html 'content/posts/_index\.md'
+assert_contains posts/index.html 'class=pagination-note'
+assert_contains posts/index.html 'pagination\.pagerSize'
+assert_contains guides/index.html 'class=pagination-note'
+assert_contains tags/content/index.html 'class=pagination-note'
+assert_contains tags/content/index.html 'pagination\.pagerSize'
+assert_not_contains tags/index.html 'class=pagination-note'
+assert_contains posts/index.html 'https://gohugo\.io/templates/pagination/'
+assert_contains tags/content/index.html 'https://gohugo\.io/templates/pagination/'
+assert_contains posts/page/2/index.html '>hugo-devkit<'
 assert_contains posts/check-generated-output/index.html 'class=content-type>Post'
+assert_contains posts/check-generated-output/index.html 'class=page-nav'
+assert_contains guides/navigation/index.html 'class=page-nav'
+assert_not_contains references/index.html 'class=page-nav'
 if [ "$(grep -o 'class=card' "$OUTPUT_ROOT/posts/index.html" | wc -l | tr -d ' ')" -ne 4 ]; then
   printf 'error: first posts page does not contain four items\n' >&2
   exit 1
@@ -183,9 +224,10 @@ assert_contains guides/content/index.html 'content/guides/content\.md'
 assert_contains tags/index.html 'themes/example/layouts/taxonomy\.html'
 assert_contains tags/content/index.html 'themes/example/layouts/term\.html'
 assert_contains guides/pages/index.html 'guides/content/'
-assert_contains site.webmanifest '"name": "Hugo Devkit"'
+assert_contains site.webmanifest '"name": "hugo-devkit"'
 
 assert_generated_asset css 'main.*.css'
+assert_generated_asset_contains css 'main.*.css' '-webkit-user-select:none' 3
 assert_generated_asset js 'main.*.js'
 assert_generated_asset guides/resources '*.webp'
 

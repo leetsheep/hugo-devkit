@@ -3,6 +3,7 @@
     <header class="listing-header">
       <h1>{{ .Title }}</h1>
       {{ .Content }}
+      {{ partial "content/pagination-note.html" . }}
     </header>
 
     {{ $paginator := .Paginate .RegularPages.ByDate.Reverse }}

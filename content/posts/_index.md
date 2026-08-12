@@ -11,5 +11,6 @@ title = 'Page methods'
 url = 'https://gohugo.io/methods/page/'
 +++
 
-These posts are small on purpose. Together they make list pagination and related
-content visible without filler text.
+This is a Hugo section list page. Hugo loads this introduction from
+`content/posts/_index.md`. Then `themes/example/layouts/section.html` renders
+each entry with `themes/example/layouts/_partials/content/card.html`.

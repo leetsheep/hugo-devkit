@@ -36,7 +36,7 @@ cases.
 
 ## Assets and data
 
-- [Asset management](https://gohugo.io/content-management/asset-management/)
+- [Resource functions](https://gohugo.io/functions/resources/)
 - [Image processing](https://gohugo.io/content-management/image-processing/)
 - [Hugo Pipes](https://gohugo.io/hugo-pipes/introduction/)
 - [Data sources](https://gohugo.io/content-management/data-sources/)

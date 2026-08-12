@@ -11,8 +11,8 @@ title = 'Fingerprint resources'
 url = 'https://gohugo.io/functions/resources/fingerprint/'
 
 [[params.references]]
-title = 'Asset management'
-url = 'https://gohugo.io/content-management/asset-management/'
+title = 'Resource functions'
+url = 'https://gohugo.io/functions/resources/'
 +++
 
 Hugo can hash an asset after it builds and minifies it. The hash changes when

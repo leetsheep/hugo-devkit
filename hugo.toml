@@ -6,7 +6,7 @@ pagination.pagerSize = 4
 summaryLength = 24
 theme = ['example']
 timeZone = 'Europe/Berlin'
-title = 'Hugo Devkit'
+title = 'hugo-devkit'
 
 [build]
   noJSConfigInAssets = true

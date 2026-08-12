@@ -17,6 +17,10 @@ downloads: Downloads
 breadcrumbs: Brotkrümelnavigation
 main_navigation: Hauptnavigation
 section_navigation: Mehr in diesem Bereich
+pagination_list_uses: Das Listentemplate erzeugt den Pager mit
+pagination_size_uses: Die Zahl der Einträge pro Seite wird festgelegt mit
+pagination_in: in
+pagination_reference: Seitennummerierung
 link_to_heading: Link zu dieser Überschrift
 not_found: Seite nicht gefunden
 not_found_help: Der Link ist vielleicht alt oder die Seite wurde verschoben.
