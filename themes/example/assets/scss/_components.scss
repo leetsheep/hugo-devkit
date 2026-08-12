@@ -6,8 +6,9 @@
 .highlight pre,
 .content > pre {
   overflow-x: auto;
-  padding: 1rem;
+  padding: 0.9rem;
   background: var(--color-code);
+  font-size: 0.9rem;
   border-radius: 0.35rem;
 }
 
@@ -24,6 +25,8 @@
   color: var(--color-fg);
   background: var(--color-surface);
   font: inherit;
+  font-size: 0.9rem;
+  user-select: none;
   cursor: pointer;
 }
 
