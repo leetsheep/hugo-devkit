@@ -7,7 +7,9 @@
       </h2>
       <ul>
         {{ range . }}
-          <li><a href="{{ .url }}">{{ .title }}</a></li>
+          <li>
+            <a href="{{ .url }}" rel="external"><span class="external-link-text">{{ .title }}</span>{{ partialCached "icons/external-link.html" . }}</a>
+          </li>
         {{ end }}
       </ul>
     </div>

@@ -68,6 +68,11 @@ only an entry point. It loads small modules for base rules, layout, content, and
 components. `main.js` only starts the code-copy and JavaScript-status modules.
 Split a module again when it takes on more than one job.
 
+The copy control keeps its markup in a small component partial. That partial
+loads `copy.svg` and `check.svg` from the theme assets. The code-copy module
+clones the markup for each code block, writes to the Clipboard API, and briefly
+shows the check mark after a successful copy.
+
 The head uses `resources.Get`, `css.Sass`, and `js.Build`. Hugo follows Sass
 `@use` rules and JavaScript `import` statements, then makes one browser asset.
 Development builds keep source maps and readable output. Production builds

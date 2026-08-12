@@ -1,2 +1,2 @@
 {{ $url := urls.Parse .Destination }}
-<a href="{{ .Destination | safeURL }}"{{ with .Title }} title="{{ . }}"{{ end }}{{ if $url.IsAbs }} rel="external"{{ end }}>{{ .Text | safeHTML }}</a>
+<a href="{{ .Destination | safeURL }}"{{ with .Title }} title="{{ . }}"{{ end }}{{ if $url.IsAbs }} rel="external"{{ end }}>{{ if $url.IsAbs }}<span class="external-link-text">{{ .Text | safeHTML }}</span>{{ partialCached "icons/external-link.html" . }}{{ else }}{{ .Text | safeHTML }}{{ end }}</a>

@@ -89,7 +89,8 @@ Files under `layouts/_markup/` control headings, links, and images produced from
 Markdown. This theme:
 
 - adds a stable link to each heading;
-- marks absolute links as external without forcing a new tab;
+- marks absolute links as external and adds a small inline SVG without forcing a
+  new tab;
 - finds a local image page resource and asks Hugo to create a smaller WebP.
 
 Render hooks keep author Markdown clean. The resource guide uses the image hook

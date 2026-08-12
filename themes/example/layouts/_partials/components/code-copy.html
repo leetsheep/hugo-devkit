@@ -1,0 +1,11 @@
+<template id="copy-button-template">
+  <button class="copy-button" type="button">
+    <span class="copy-button__copy-icon">
+      {{ with resources.Get "icons/copy.svg" }}{{ .Content | safeHTML }}{{ end }}
+    </span>
+    <span class="copy-button__check-icon" hidden>
+      {{ with resources.Get "icons/check.svg" }}{{ .Content | safeHTML }}{{ end }}
+    </span>
+    <span class="copy-button__label" aria-live="polite"></span>
+  </button>
+</template>

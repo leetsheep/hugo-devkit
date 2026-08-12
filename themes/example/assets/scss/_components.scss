@@ -15,12 +15,33 @@
   position: absolute;
   top: 0.5rem;
   right: 0.5rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
   padding: 0.3rem 0.5rem;
   border: 1px solid var(--color-line);
   border-radius: 0.25rem;
+  color: var(--color-fg);
   background: var(--color-surface);
   font: inherit;
   cursor: pointer;
+}
+
+.copy-button__copy-icon,
+.copy-button__check-icon {
+  display: inline-flex;
+  flex: 0 0 auto;
+}
+
+.copy-button__copy-icon[hidden],
+.copy-button__check-icon[hidden] {
+  display: none;
+}
+
+.copy-icon,
+.check-icon {
+  width: 1em;
+  height: 1em;
 }
 
 figure {
@@ -36,6 +57,36 @@ figcaption {
   margin-block-start: 0.5rem;
   color: var(--color-muted);
   font-size: 0.9rem;
+}
+
+.external-link-text {
+  text-decoration: underline;
+}
+
+a[rel~="external"] {
+  text-decoration: none;
+}
+
+a[rel~="external"]:hover .external-link-text {
+  text-decoration-thickness: 0.14em;
+}
+
+.external-link-icon {
+  display: inline-block;
+  width: 1.1em;
+  height: 1.1em;
+  overflow: visible;
+  vertical-align: -0.2em;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .external-link-icon__arrow {
+    transition: transform 150ms ease-out;
+  }
+
+  a[rel~="external"]:is(:hover, :focus-visible) .external-link-icon__arrow {
+    transform: translate(1px, -1px);
+  }
 }
 
 .site-meta {
